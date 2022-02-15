@@ -1,0 +1,64 @@
+- name: making changes to localhost
+  hosts: 127.0.0.1
+  connection: local
+  become: yes
+  become_user: root
+  tasks:
+  - name: creating directory inside /home/apache/patch_logs folder if missing
+    file:
+      path: /home/apache/patch_logs/{{ansible_date_time.date}}
+      state: directory
+      owner: apache
+      group: apache
+      mode: "u=rwx,g=rw,o=rw"
+- name: executing these commands on remote host
+  hosts: group1 ,!127.0.0.1
+  become: yes
+  become_user: root
+  tasks:
+  - name: creating backup directory /etc/yum.repos.d/bkp on remote host
+    file:
+      path: /etc/yum.repos.d/bkp
+      state: directory
+      mode: "u=rwx,g=rx,o=x"
+  - name: executing yum clean all
+    shell: yum clean all
+    args:
+      warn: no
+  - name: download file from http server
+    get_url:
+      url: http://10.140.17.8/repo/local_yum.repo
+      dest: /etc/yum.repos.d/local_yum.repo
+      mode: '0644'
+  - name: moving old repos to /etc/yum.repos.d/bkp directory
+    shell: mv *.repo* /etc/yum.repos.d/bkp/
+    args:
+      chdir: /etc/yum.repos.d
+  - name: download file from http server
+    get_url:
+      url: http://10.140.17.8/repo/local_yum.repo
+      dest: /etc/yum.repos.d/local_yum.repo
+      mode: '0644'
+  - name: copying yum_update on remote host in /tmp/directory
+    copy:
+      src: /root/bin/yum_apply.sh
+      dest: /tmp/yum_apply.sh
+  - name: running yum_apply.sh on remote host
+    shell: sh /tmp/yum_apply.sh
+  - name: feching log file and copying to website
+    fetch:
+      src: /tmp/{{ ansible_hostname }}.yumupdate.out
+      dest: /tmp/
+      flat: true
+- name: making changes to localhost
+  hosts: 127.0.0.1
+  connection: local
+  become: yes
+  become_user: root
+  tasks:
+  - name: moving log file from /tmp/ to website
+    shell: cp /tmp/*.yumupdate.out /home/apache/patch_logs/{{ansible_date_time.date}}/
+  - name: setting permission to apache user
+    shell: chown apache:apache /home/apache/patch_logs/{{ansible_date_time.date}}/*
+    args:
+      warn: false

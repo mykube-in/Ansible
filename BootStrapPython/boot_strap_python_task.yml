@@ -1,0 +1,12 @@
+# Note python 3.X binary is python3 not python. 
+- name: TASK1 -Check for Python and store it in variable
+  raw: test -e /usr/bin/python
+  changed_when: false
+  failed_when: false
+  register: check_python
+- name: TASK2 - display python install status
+  debug: 
+    var=check_python 
+- name: TASK3 Install Python
+  raw: test -e /usr/bin/apt && (apt -y update && apt install -y python) || (yum -y install python libselinux-python)
+  when: check_python.rc != 0

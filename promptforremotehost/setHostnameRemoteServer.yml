@@ -1,0 +1,45 @@
+- name: this play will prompt for IP address of remote server and add it to custom dynamic inventory
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  become: false
+  vars_prompt:
+  - name: target_host
+    prompt: please enter the target host IP
+    private: no
+  tasks:
+    - name: adding IP address to the custom dynamic group
+      add_host:
+        name: "{{ target_host }}"
+        groups: 
+          - dynamically_created_hosts
+    - name: using template
+      template:
+        src: my.j2
+        dest: output.txt
+
+- name: this play will set new hostname
+  hosts: dynamically_created_hosts
+  gather_facts: true
+  become: true
+  vars_prompt:
+  - name: serverName
+    prompt: Please enter New Server Name
+    private: no
+  tasks:
+    - name: Set a hostname specifying strategy
+      hostname:
+        name: "{{ serverName }}"
+    - name: "adding loopback entry in /etc/hosts for ubuntu"
+      lineinfile:
+        path: /etc/hosts
+        regexp: ^127.0.1.1(\s+)ubuntu20baseimg$
+        line: 127.0.1.1  {{ serverName }} 
+        backrefs: yes
+        state: present
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    - name: "adding IP and hostname to /etc/hosts"
+      lineinfile:
+        path: /etc/hosts
+        line: "{{groups.all[0]}}  {{groups.all[1]}}"
+        state: present

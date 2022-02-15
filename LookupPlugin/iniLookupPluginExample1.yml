@@ -1,0 +1,11 @@
+---
+- name: "INI"
+  hosts: localhost
+  connection: local
+  become: True
+  vars:
+    key: "{{ lookup('ini', 'core_plugin file=network.ini section=plugins') }}"
+  tasks:
+    - name: "read INI file display"
+      debug:
+        msg: "{{ key }}"

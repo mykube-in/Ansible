@@ -1,0 +1,10 @@
+---
+- name: database configurations
+  hosts: all
+  become: true
+  gather_facts: true
+  tasks:
+          - name: common_task_update_packages
+            include_tasks: common_task_update_packages.yml
+          - name: common_task_update_etc_hosts_file
+            include_tasks: common_task_update_etc_hosts_file.yml

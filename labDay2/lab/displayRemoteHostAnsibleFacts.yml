@@ -1,0 +1,15 @@
+---
+ - name: "this playbook is to display ansible_facts"
+   hosts: centosgrp
+   gather_facts: true
+   become: true
+   vars:
+      ostype1: centos 
+      ostype2: ubuntu
+   tasks:
+     - name: "Display all ansible_facts"
+       debug:
+         var: ansible_facts.distribution
+
+
+         

@@ -1,0 +1,41 @@
+[root@lue2doelrepo_server play_books]# cat collect_sar_data.yml
+- name: making changes to localhost
+  hosts: 127.0.0.1
+  connection: local
+  become: yes
+  become_user: root
+  vars:
+    sarDir: /home/apache/sar_data/host_data/{{ansible_date_time.date}}/{{remote_                                                                                        host}}/
+  tasks:
+  - name: creating directory inside {{sarDir}} folder if missing
+    file:
+       path: "{{sarDir}}"
+       state: directory
+       owner: nbtyadmin
+       group: nbtyadmin
+       mode: "u=rwx,g=r,o=r"
+- name: executing these commands on remote host
+  hosts: TempGroup01 ,!127.0.0.1
+  become: yes
+  become_user: root
+  vars:
+     sarDir: /home/apache/sar_data/host_data/{{ansible_date_time.date}}/{{remote                                                                                        _host}}/
+  tasks:
+      - name: Generating list of files on {{remote_host}}
+        shell: (cd /var/log/sa; find . -maxdepth 1 -type f) | cut -d'/' -f2 |gre                                                                                        p sa[0-3]
+        register: files_to_copy
+      - name: generating txt file from sar files on {{remote_host}}
+        shell: sar -A -f /var/log/sa/{{item}} > /var/log/sa/{{item}}.txt
+        with_items: "{{ files_to_copy.stdout_lines }}"
+      - name: feching sar log file from {{remote_host}}  and copying to {{sarDir                                                                                        }}
+        fetch:
+            src: /var/log/sa/{{item}}.txt
+            dest: "{{sarDir}}"
+            flat: true
+        with_items: "{{ files_to_copy.stdout_lines }}"
+      - name: deleting .txt files from destination
+        file:
+            path: /var/log/sa/{{item}}.txt
+            state: absent
+        with_items: "{{ files_to_copy.stdout_lines }}"
+[root@lue2doelrepo_server play_books]#

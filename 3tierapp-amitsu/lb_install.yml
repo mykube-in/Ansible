@@ -1,0 +1,6 @@
+- name: package install
+  apt:
+    name: nginx
+    state: present
+  when: ansible_distribution == "Ubuntu"
+

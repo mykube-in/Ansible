@@ -1,0 +1,23 @@
+---
+- name: appserver configurations
+  hosts: appserver
+  become: true
+  gather_facts: true
+  tasks:
+          - name: application installation
+            include_tasks: app_install.yml
+          - name: application pre configure task
+            include_tasks: app_preconfig.yml
+          - name: application configuration task
+            include_tasks: app_configure.yml
+  handlers:
+           - name: remove root dir of old tomcat
+             file:
+                path: /var/lib/tomcat9/webapps/ROOT
+                state: absent
+             listen: "restart web services"
+           - name: restart tomcat9 service
+             service:
+               name: tomcat9
+               state: restarted
+             listen: "restart web services"

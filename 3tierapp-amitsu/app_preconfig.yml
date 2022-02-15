@@ -1,0 +1,14 @@
+- name: fetching server name from in-buit groups and storing invariable
+  debug:
+    msg: "{{  groups.database }}"
+  register: dbServerName
+- name: display value of dbServerName variable
+  debug: 
+    msg: "{{ dbServerName.msg }}"
+    verbosity: 1
+- name: tricytask-updating value of db server IPaddress in /etc/hosts file as it is application dependency
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ hostvars[item]['ansible_default_ipv4']['address'] }} mysql.okts-dev"
+    state: present
+  with_items: "{{ dbServerName.msg }}"

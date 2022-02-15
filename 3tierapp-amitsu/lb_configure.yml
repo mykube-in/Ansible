@@ -1,0 +1,6 @@
+- name: copy nginx config to loadbalancer.
+  template:
+    src: nginxnewconf.j2
+    dest: /etc/nginx/sites-available/default
+  notify: restart nginx
+

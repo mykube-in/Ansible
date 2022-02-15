@@ -1,0 +1,29 @@
+---
+- name: "check you have ignore_errors and Tags usage"
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: "installing a software"
+      debug:
+        msg: "installing a software"
+      tags:
+        - install-tag
+    - name: "going to create an error"
+      copy:
+        src: variable.txt
+        dest: /tmp
+      ignore_errors: true
+    - name: "config a  software"
+      command: touch /tmp/abc.txt
+      tags:
+        - config-software
+        - config-tag
+    - name: "config the database"
+      command: touch /tmp/qwe.txt
+      tags:
+        - config-db
+        - config-tag
+    - name: "restart the app"
+      command: touch /tmp/xyz.txt
+      tags:
+        - restart

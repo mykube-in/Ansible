@@ -1,0 +1,12 @@
+---
+- name: "ENV"
+  hosts: localhost
+  connection: local
+  become: True
+  vars:
+    key: "{{ lookup('env','HOME') }} "
+  tasks:
+    - name: url lookup splits lines by default
+      debug: 
+        msg: "{{item}}"
+      loop: "{{ lookup('url', 'https://github.com/gremlin.keys', wantlist=True) }}"

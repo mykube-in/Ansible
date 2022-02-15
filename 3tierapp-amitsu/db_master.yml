@@ -1,0 +1,15 @@
+---
+- name: database configurations
+  hosts: database
+  become: true
+  gather_facts: true
+  tasks:
+          - name: installation tasks
+            include_tasks: db_install.yaml
+          - name: configure
+            include_tasks: db_configure.yml
+  handlers:
+          - name: restart mysql
+            service: 
+                name: mysql
+                state: restarted

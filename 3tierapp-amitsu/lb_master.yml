@@ -1,0 +1,15 @@
+- name: 'loadbalancer master file'
+  hosts: lb 
+  become: true
+  vars:
+    nginxport: 80
+  tasks:
+    - name: installing loadbalancer
+      include_tasks: lb_install.yml
+    - name: copy nginx config to loadbalancer.
+      include_tasks: lb_configure.yml
+  handlers:
+    - name: restart nginx
+      service: 
+        name: nginx 
+        state: restarted

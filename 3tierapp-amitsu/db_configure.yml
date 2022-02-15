@@ -1,0 +1,23 @@
+- name: create a database
+  no_log: true
+  mysql_db:
+     name: employeedb
+     state: present
+     login_user: root
+     login_password: mypassword
+- name: configure username and password
+  no_log: true
+  mysql_user:
+     name: gaurav
+     password: mypassword
+     priv: '*.*:ALL,GRANT'
+     state: present
+     host: '%'
+  ignore_errors: true
+- name: database configurations
+  lineinfile:
+    dest: /etc/mysql/mysql.conf.d/mysqld.cnf
+    regexp: ^bind-address
+    line: bind-address = 0.0.0.0
+    state: present
+  notify: restart mysql

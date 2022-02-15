@@ -1,0 +1,5 @@
+- name: copy war file in remote server
+  copy:
+    src: Spring3HibernateApp.war
+    dest: /var/lib/tomcat9/webapps/ROOT.war
+  notify: restart web services

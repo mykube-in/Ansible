@@ -1,0 +1,29 @@
+---
+- name: "This is my First Play"
+  hosts: centosgrp
+  become: True
+  become_user: root
+  gather_facts: False
+  tasks:
+    - name: "This is my first PING task of First Play"
+      ping:
+    - name: "This is my second COPY task of First Play"
+      file:
+        path: /tmp/testfile.txt
+        state: touch
+
+- name: "This is my Second Play"
+  hosts: ubuntugrp
+  gather_facts: True
+  tasks:
+    - name: "This is my first PING task of Second Play"
+      ping:
+
+- name: "This is my Third Play"
+  hosts: fakeungrouped01
+  become: True
+  become_user: root
+  gather_facts: False
+  tasks:
+    - name: "This is my first task of Third Play"
+      ping:

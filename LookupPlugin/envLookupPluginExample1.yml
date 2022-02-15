@@ -1,0 +1,11 @@
+---
+- name: "ENV"
+  hosts: localhost
+  connection: local
+  become: True
+  vars:
+    key: "{{ lookup('env','HOME') }} "
+  tasks:
+    - name: "read env"
+      debug:
+        msg: "{{ key }}"

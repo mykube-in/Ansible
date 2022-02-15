@@ -1,0 +1,54 @@
+---
+- name: Using Azure collection
+  hosts: localhost
+  become: yes
+  become_user: root
+  vars:
+     somelist: [{'name':'Oracle_Disk_0001','size':'4','lun':'1'},{'name':'Oracle_Disk_0002','size':'4','lun':'2'}]
+  collections:
+  tasks:
+     - name: displaying disk name
+       debug:  "{{ item.name }}"
+       loop: "{{ somelist }}"
+     - name: Mount the managed disk to VM
+       azure.azcollection.azure_rm_manageddisk:
+           name: "{{ item.name }}"
+           location: eastus2
+           resource_group: patchtest-rg
+           disk_size_gb: "{{ item.size }}"
+           managed_by: repoclient_app01
+           attach_caching: read_only
+           lun:  "{{ item['lun'] }}"
+       loop: "{{ somelist }}"
+- name: Create or resize a volume group on top of /dev/sdb1 and /dev/sdc5.
+  hosts: group1
+  become: yes
+  become_user: root
+  collections:
+  tasks:
+     - name: Adding disk to VG
+       community.general.lvg:
+           vg: ora_vg
+           pvs: /dev/sdd,/dev/sde
+     - name: Create a logical volume the size of all remaining space in the volume group
+       community.general.lvol:
+           vg: ora_vg
+           lv: test_lv
+           size: 100%FREE
+     - name: Create a filesystem on lvm /dev/mapper/ora_vg-test_lv
+       filesystem:
+           fstype: xfs
+           dev: /dev/mapper/ora_vg-test_lv
+           force: no
+     - name: Create a directory to mount the filesystem.
+       file:
+           path: /test
+           state: directory
+           mode: '0755'
+     - name: Mount the created "{{ fs }}" filesystem.
+       mount:
+           path: /test
+           src: /dev/mapper/ora_vg-test_lv
+           fstype: xfs
+           opts: rw,nosuid,noexec
+           state: mounted

@@ -1,0 +1,39 @@
+---
+- name: executing these commands on remote host
+  hosts: all
+  become: yes
+  become_user: root
+  vars:
+    softwares: 
+      - httpd
+      - tree
+    groupsToAdd:
+      - usersgrp
+      - admingrp
+  tasks:
+  - name: "installng softwares ...."
+    yum:
+      name: "{{softwares}}"
+      state: latest
+  - name: "Ensure  httpd is running..."
+    service:
+      name: httpd
+      state: started
+  - name: "Ensure group somegroup exists"
+    ansible.builtin.group:
+      name: somegroup
+      state: present
+  - name: "creating groups..."
+    ansible.builtin.group:
+    #Error - The value(type list) in a string field was converted to(type string)
+    #Solution convert "{{groupsToAdd}}" to "{{groupsToAdd|string}}"
+    #Still issue - fatal: [10.10.192.6]: FAILED! => {"changed": false, "msg":
+    #"groupadd: '[u'usersgrp', u'admingrp']' is not a valid group name\n", "name": "[u'usersgrp', u'admingrp']"}
+      name: "{{groupsToAdd|string}}"
+      state: present
+  - name: create username apacheadm
+    user:
+      name: apacheadm
+      group: usersgrp,admingrp
+      shell: /bin/bash
+      home: /home/weblogic

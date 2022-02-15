@@ -1,0 +1,16 @@
+---
+- name: "this playbook update entry in authorized_key file for user vagrant."
+  hosts: localhost
+  connection: local
+  become: True
+  vars:
+    data1: "{{ lookup('dig', 'yahoo.com./TXT') }}"
+    data2: "{{lookup('dig', 'yahoo.com', wantlist=True)}}"
+    
+  tasks:
+    - name: display file content
+      debug:
+        msg: "{{ data1 }} "
+    - name: display file content
+      debug:
+        msg: "{{ data2 }} "

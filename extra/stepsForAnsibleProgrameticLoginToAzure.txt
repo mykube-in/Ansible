@@ -1,0 +1,65 @@
+#az ad sp create-for-rbac -n ansibleapp
+Changing "ansibleapp" to a valid URI of "http://ansibleapp", which is the required format used for service principal names
+In a future release, this command will NOT create a 'Contributor' role assignment by default. If needed, use the --role argument to explicitly create a role assignment.
+Creating 'Contributor' role assignment under scope '/subscriptions/SUBSCRIPTIONID-46fb-SSSSS-a9c8-SSSSSSSSSS'
+  Retrying role assignment creation: 1/36
+The output includes credentials that you must protect. Be sure that you do not include these credentials in your code or check the credentials into your source control. For more information, see https://aka.ms/azadsp-cli
+{
+  "appId": "APPID-b1ba-484a-98ad-xxxxxxxxxxxxxx",
+  "displayName": "ansibleapp",
+  "name": "http://ansibleapp",
+  "password": "PASSWORDFORAPPLOGIN",
+  "tenant": "TENENTID-tttt-1234-tttt-ttttttttttttttttttttttt"
+}
+
+
+
+
+#az ad sp show  --id APPID-b1ba-484a-98ad-xxxxxxxxxxxxxx
+#az role assignment create --assignee APPID-b1ba-484a-98ad-xxxxxxxxxxxxxx --role contributor
+
+#RoleAssignmentToApp probably now required. - ansibleapp
+Select Portal > Resource Groups > aks-cluster-rg > Access control (IAM) > Role assignments > Add > Role-contributor, Accessto - userGrouporServicePrincipal> 
+Select > ansibleapp >Search > select ansibleapp from search result > Save.
+
+#Just FYI (https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-cli)
+#az role definition list  --subscription SUBSCRIPTIONID-46fb-SSSSS-a9c8-SSSSSSSSSS --query "[?roleName=='Contributor']"
+[
+  {
+    "assignableScopes": [
+      "/"
+    ],
+    "description": "Grants full access to manage all resources, but does not allow you to assign roles in Azure RBAC, manage assignments in Azure Blueprints, 
+                    or share image galleries.",
+    "id": "/subscriptions/SUBSCRIPTIONID-46fb-SSSSS-a9c8-SSSSSSSSSS/providers/Microsoft.Authorization/roleDefinitions/NUMBERIC-ID-OF-ROLE",
+    "name": "NUMBERIC-ID-OF-ROLE",
+
+.
+.
+.
+
+]
+[root@NAT chapter02NoTsl]#
+
+
+
+#az keyvault create --name MY-PERSONAL-KEY-VAULT --resource-group aks-cluster-rg --location "EastUS"
+"vaultUri": "https://MY-PERSONAL-KEY-VAULT.vault.azure.net/"
+
+#az keyvault secret set --vault-name MY-PERSONAL-KEY-VAULT --name "AnsibleAppPassword" --value "PASSWORDFORAPPLOGIN"
+#az keyvault secret set -n AnsibleAppId --value APPID-b1ba-484a-98ad-xxxxxxxxxxxxxx --vault-name MY-PERSONAL-KEY-VAULT
+ansibleAppPassword=$(az keyvault secret show -n AnsibleAppPassword --vault-name MY-PERSONAL-KEY-VAULT --query value -o tsv 2>/dev/null)
+ansibleAppID=$(az keyvault secret show -n AnsibleAppId --vault-name MY-PERSONAL-KEY-VAULT --query value -o tsv 2>/dev/null)
+# echo $ansibleAppPassword
+PASSWORDFORAPPLOGIN
+# echo $ansibleAppID
+APPID-b1ba-484a-98ad-xxxxxxxxxxxxxx
+
+
+
+
+
+subscription_id=SUBSCRIPTIONID-46fb-SSSSS-a9c8-SSSSSSSSSS
+client_id=APPID-b1ba-484a-98ad-xxxxxxxxxxxxxx
+secret=PASSWORDFORAPPLOGIN
+tenant=TENENTID-tttt-1234-tttt-ttttttttttttttttttttttt

@@ -1,0 +1,26 @@
+---
+- name: "Error Handling"
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: "ansible code block to install necessary software"
+      block:
+        - name: "installing the software"
+          debug:
+            msg: "installing"
+          tags:
+            - install
+        - name: "configure will give error as file is missing"
+          copy:
+            src: variable1.txt
+            dest: /tmp
+          tags:
+            - create-error
+      rescue:
+        - name: "this block of code will run only if error occur in above block"
+          debug:
+            msg: "rescue code execute"
+      always:
+        - name: "this block of code will always execute"
+          debug:
+            msg:  "always code execute"

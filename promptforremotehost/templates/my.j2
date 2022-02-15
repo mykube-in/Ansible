@@ -1,0 +1,5 @@
+{% set myListOfKeys = [] %}
+{% for key in hostvars.keys() %}
+   {{-  myListOfKeys.append(key) -}}
+{% endfor %}
+{{  hostvars[myListOfKeys[0]].groups.dynamically_created_hosts[0] }}

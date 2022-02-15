@@ -1,0 +1,11 @@
+---
+- name: "this is my play which will have task"
+  hosts: centosgrp
+  gather_facts: False
+  tasks:
+    - name: "this task is to create file using command module"
+      lineinfile:
+        path: /tmp/testfile123.txt
+        line: 123
+        state: present
+        create: yes

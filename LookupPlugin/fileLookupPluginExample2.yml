@@ -1,0 +1,11 @@
+---
+- name: "this playbook update entry in authorized_key file for user vagrant."
+  hosts: localhost
+  connection: local
+  become: True
+  vars:
+    data: "{{  lookup('file','/etc/hosts')  }}"
+  tasks:
+    - name: display file content
+      debug:
+        msg: "contents of /etc/hosts {{data}} "

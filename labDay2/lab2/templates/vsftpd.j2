@@ -1,0 +1,24 @@
+{# we will pass this section via vars with in yaml file #}
+anonymous_enable={{ anonymous_enable }}
+local_enable={{ local_enable }}
+write_enable={{ write_enable }}
+{# These are hard coded values for all the centos servers #}
+local_umask=022
+anon_upload_enable=NO
+dirmessage_enable=YES
+message_file=/etc/vsftpd/message.txt
+xferlog_enable=YES
+connect_from_port_20=NO
+pasv_enable=YES
+port_enable=YES
+pasv_max_port=50000
+pasv_min_port=50999
+xferlog_std_format=YES
+listen=YES
+{# we are to define listen_address using gather_fact: True  in yaml file playbook #}
+listen_address={{ ansible_default_ipv4.address }}
+listen_ipv6=NO
+pam_service_name=vsftpd
+userlist_enable=YES
+userlist_file=/etc/vsftpd/user_list
+userlist_deny=NO

@@ -1,0 +1,9 @@
+---
+- name: main playbook to bookstrap python on remote host using raw module.
+  hosts: ubuntu01
+  gather_facts: false
+  become: true
+  tasks:
+    - name: including task to bootstrap python using boot_strap_python_task.yml
+      include_tasks: boot_strap_python_task.yml
+       

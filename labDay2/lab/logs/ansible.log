@@ -1,0 +1,61 @@
+2021-08-07 05:32:34,790 p=21063 u=unix n=ansible | PLAY [localhost] *****************************************************************************************************
+2021-08-07 05:32:34,828 p=21063 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-07 05:32:36,090 p=21063 u=unix n=ansible | ok: [localhost]
+2021-08-07 05:32:36,114 p=21063 u=unix n=ansible | TASK [debug] *********************************************************************************************************
+2021-08-07 05:32:36,185 p=21063 u=unix n=ansible | ok: [localhost] => {
+    "ansible_all_ipv4_addresses": [
+        "172.21.216.92"
+    ]
+}
+2021-08-07 05:32:36,209 p=21063 u=unix n=ansible | TASK [debug] *********************************************************************************************************
+2021-08-07 05:32:36,278 p=21063 u=unix n=ansible | ok: [localhost] => {
+    "ansible_default_ipv4.address": "172.21.216.92"
+}
+2021-08-07 05:32:36,284 p=21063 u=unix n=ansible | PLAY [all] ***********************************************************************************************************
+2021-08-07 05:32:36,305 p=21063 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-07 05:32:38,860 p=21063 u=unix n=ansible | ok: [ubuntu01]
+2021-08-07 05:32:38,986 p=21063 u=unix n=ansible | ok: [ubuntu02]
+2021-08-07 05:32:44,458 p=21063 u=unix n=ansible | ok: [centos01]
+2021-08-07 05:32:48,909 p=21063 u=unix n=ansible | ok: [centos02]
+2021-08-07 05:32:48,938 p=21063 u=unix n=ansible | TASK [debug] *********************************************************************************************************
+2021-08-07 05:32:49,035 p=21063 u=unix n=ansible | ok: [centos01] => {
+    "ansible_all_ipv4_addresses": [
+        "192.168.122.1",
+        "192.168.1.3"
+    ]
+}
+2021-08-07 05:32:49,041 p=21063 u=unix n=ansible | ok: [centos02] => {
+    "ansible_all_ipv4_addresses": [
+        "192.168.122.1",
+        "192.168.1.5"
+    ]
+}
+2021-08-07 05:32:49,068 p=21063 u=unix n=ansible | ok: [ubuntu01] => {
+    "ansible_all_ipv4_addresses": [
+        "192.168.1.2"
+    ]
+}
+2021-08-07 05:32:49,096 p=21063 u=unix n=ansible | ok: [ubuntu02] => {
+    "ansible_all_ipv4_addresses": [
+        "192.168.1.4"
+    ]
+}
+2021-08-07 05:32:49,121 p=21063 u=unix n=ansible | TASK [debug] *********************************************************************************************************
+2021-08-07 05:32:49,220 p=21063 u=unix n=ansible | ok: [centos01] => {
+    "ansible_default_ipv4.address": "192.168.1.3"
+}
+2021-08-07 05:32:49,224 p=21063 u=unix n=ansible | ok: [centos02] => {
+    "ansible_default_ipv4.address": "192.168.1.5"
+}
+2021-08-07 05:32:49,256 p=21063 u=unix n=ansible | ok: [ubuntu01] => {
+    "ansible_default_ipv4.address": "192.168.1.2"
+}
+2021-08-07 05:32:49,285 p=21063 u=unix n=ansible | ok: [ubuntu02] => {
+    "ansible_default_ipv4.address": "192.168.1.4"
+}
+2021-08-07 05:32:49,288 p=21063 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-07 05:32:49,289 p=21063 u=unix n=ansible | centos01                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-07 05:32:49,289 p=21063 u=unix n=ansible | centos02                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-07 05:32:49,290 p=21063 u=unix n=ansible | localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-07 05:32:49,290 p=21063 u=unix n=ansible | ubuntu01                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-07 05:32:49,291 p=21063 u=unix n=ansible | ubuntu02                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

@@ -1,0 +1,47 @@
+#####################################################################
+# https://medium.com/opsops/is-defined-in-ansible-d490945611ae
+# 
+#
+#
+######################################################################
+---
+- name: executing these commands on remote host
+  hosts: all
+  become: yes
+  become_user: root
+  vars:
+    my_file: "/etc/resolv.conf"
+    foo: "abc"
+  #vars_files:
+  #- /vars/external_vars.yml
+  tasks:
+  - debug:
+      msg: "just echo variable for debug {{ my_file }}"
+    #example - when: foo is defined and foo == True or (bar is defined and bar != True)
+    when: my_file is defined
+  - debug: 
+      msg: "foo={{foo}} and bar={{bar}}"
+    when: foo|default(False) == True or bar|default(False) == True
+  - name: Ensure resolv.conf is mutable.
+    file:
+      path: "{{ my_file }}"
+      attr: -i
+    register: resolv_file
+    changed_when: "'i' not in resolv_file.diff.before.attributes"
+  
+  - name: copy file with owner and permissions
+    ansible.builtin.copy:
+      src: "{{ my_file }}"
+      dest: "{{ my_file }}"
+      backup: yes
+      owner: root
+      group: root
+      mode: '644'
+  - name: Ensure resolv.conf is immutable.
+    file:
+      path: "{{ my_file }}"
+      attr: +i
+    register: resolv_file
+    changed_when: "'i' not in resolv_file.diff.before.attributes"
+
+

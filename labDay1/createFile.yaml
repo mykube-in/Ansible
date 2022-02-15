@@ -1,0 +1,7 @@
+---
+- name: "this is my play which will have task"
+  hosts: centosgrp
+  gather_facts: False
+  tasks:
+    - name: "this task is to create file using command module"
+      shell: echo 123 > /tmp/testfile123.txt

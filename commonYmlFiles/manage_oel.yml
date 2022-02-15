@@ -1,0 +1,37 @@
+#Owner : Amit Suneja
+#Purpose : To Install rpms on OEL Servers a
+#vars/default.yml os a variable file please update sys_packages varib;e to install rpms
+#ansible-playbook -l [target] -i [inventory file] -u [remote user] playbook.yml
+#---
+- hosts: all
+  become: yes
+  become_user: root
+  vars_files:
+   - vars/default.yml
+  tasks:
+   - name: Install required rpms
+     yum:
+       name: "{{ sys_packages }}"
+       state: present
+       update_cache: true
+   - name: Disable password authentication for root
+     lineinfile:
+       path: /etc/ssh/sshd_config
+       state: present
+       regexp: '^#?PermitRootLogin'
+       line: 'PermitRootLogin prohibit-password'
+   - name: restart sshd
+     service:
+       name: sshd
+       state: restarted
+   - name: Make sure we have a 'wheel' group
+     group:
+        name: wheel
+        state: present
+   - name: Allow 'wheel' group to have passwordless sudo
+     lineinfile:
+        path: /etc/sudoers
+        state: present
+        regexp: '^%wheel'
+        line: '%wheel ALL=(ALL) NOPASSWD: ALL'
+        validate: '/usr/sbin/visudo -cf %s'

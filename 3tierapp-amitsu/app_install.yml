@@ -1,0 +1,5 @@
+- name: package install
+  apt:
+    name: tomcat9
+    state: present
+  when: ansible_distribution == "Ubuntu"

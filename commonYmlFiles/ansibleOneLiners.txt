@@ -1,0 +1,17 @@
+# The good thing about YAML is the fact that it supports multiple data types such as Lists, Maps, and scalar types.
+
+ansible  10.10.192.4 -i inv  --user=amitadmin -f 5 -m ping
+ansible  10.10.192.4 -i inv  --user=amitadmin -f 5 -m shell -a uptime
+ansible  10.10.192.4 -i inv  --user=amitadmin -f 5 -m command -a uptime
+
+# setup module use to by gather_facts = True
+ansible  ns1 -i inv  --user=amitadmin -f 5 -m setup
+ansible  all -i inv  -m gather_facts --tree /tmp/facts
+( cat /tmp/facts/ns1  | jq   "." | cat > 1.txt )
+
+
+
+
+export ANSIBLE_HOST_KEY_CHECKING=False
+
+# ansible-playbook -L specific_host -i Path_of_Inv PlayBookName.yml

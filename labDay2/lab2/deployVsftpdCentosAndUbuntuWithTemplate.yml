@@ -1,0 +1,124 @@
+---
+ - name: "this playbook is to deply Vsftpd on centos and ubuntu servers"
+   hosts: unixservers
+   gather_facts: true
+   become: yes
+   vars:
+      anonymous_enable: NO
+      local_enable: YES
+      write_enable: YES
+      rpm_list:
+        - vsftpd-3.0.3-33.el8.x86_64
+        - ftp-0.17-78.el8.x86_64
+        - firewall-config-0.8.2-7.el8_4.noarch
+      apt_list: [vsftpd , ftp, firewall-config ]
+# Note: List can be defined both ways as mentioned above
+      appuser: amitftp
+      appuser_password: amit@123
+      ostype1: centos
+      ostype2: ubuntu
+   tasks:
+     - name: preprep for {{ ostype2| upper }} server ONLY."
+       file:
+         path: /etc/vsftpd
+         state: directory
+         mode: '0755'
+     - name: "Task to upgrade all the packages on {{ ostype1| upper }} server."
+       yum:
+         name: "*"
+         state: latest
+         update_cache: yes
+       when: ansible_facts.distribution|upper ==  ostype1.upper()
+# Note: How we have used |upper filter with variable And How we have used .opper() with filter.
+     - name: "Task to upgrade all the packages on {{ ostype2| upper }} server."
+       apt:
+         name: "*"
+         state: latest
+         update_cache: yes
+       when: ansible_facts.distribution|upper ==  ostype2.upper()     
+     - name: "installing vsftpd on {{ ostype1| upper }} server."
+       yum:
+         name: "{{ item }}"
+         state: present
+       with_items: "{{ rpm_list }}"
+       when: ansible_facts.distribution|upper ==  ostype1.upper()
+     - name: "installing vsftpd on {{ ostype2| upper }} server."
+       apt:
+         name: "{{ item }}"
+         state: present
+       with_items: "{{ apt_list }}"
+       when: ansible_facts.distribution|upper ==  ostype2.upper()
+     - name: "copy config file vsftpd.conf using jinja template present in ./templates/vsftpd.j2"
+       template:
+         src: vsftpd.j2
+         dest: /etc/vsftpd/vsftpd.conf
+       when: ansible_facts.distribution|upper ==  ostype1.upper()
+       notify:
+         - "Staring the vsftpd service"
+     - name: "copy config file vsftpd.conf using jinja template present in ./templates/vsftpd.j2"
+       template:
+         src: vsftpd.j2
+         dest: /etc/vsftpd.conf
+       when: ansible_facts.distribution|upper ==  ostype2.upper()
+       notify:
+         - "Staring the vsftpd service"      
+     - name: "task to create application user"
+       ansible.builtin.user:
+         name: "{{ appuser }}"
+         comment: vsftpd application user
+         uid: 1003
+         update_password: always
+         password : "{{appuser_password | lower | default('123456')| password_hash('sha512')}}"
+         expires: -1
+         shell: /bin/bash
+         groups: sudo
+         append: yes
+     - name: "removing application user amitftp from file if present by mstake /etc/vsftpd/ftpusers"
+       lineinfile:
+         path: /etc/vsftpd/ftpusers
+         regexp: "^{{ appuser }}"
+         state: absent
+     - name: "ensure file /etc/vsftpd/user_list exist and its empty"
+       copy:
+         content: ""
+         dest: /etc/vsftpd/user_list
+         force: yes
+         group: root
+         owner: root
+         mode: 0600
+     - name: "adding application user to /etc/vsftpd/user_list so that he can be able to ftp."
+       lineinfile:
+         path: /etc/vsftpd/user_list
+         line: "{{ appuser }}"
+         state: present
+     - name: "enabling port number 21 in firewall so that application user can connect."
+       firewalld:
+         port: 21/tcp
+         permanent: yes
+         state: enabled
+       notify:
+         - "restart the firewall"
+     - name: "adding ftp service to firewall"
+       firewalld:
+         service: ftp
+         permanent: yes
+         state: enabled
+       notify:
+         - "restart the firewall"
+     - name: "enabling port number 50000 to 50999/tcp in firewall so that application user can connect."
+       firewalld:
+         port: 50000-50999/tcp
+         permanent: yes
+         state: enabled
+       notify: 
+         - "restart the firewall"
+   handlers: 
+     - name: "restart the firewall"
+       service:
+         name: firewalld
+         state: reloaded 
+     - name: "Staring the vsftpd service"
+       service:
+         name: vsftpd
+         state: started
+         enabled: yes

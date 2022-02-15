@@ -1,0 +1,8 @@
+- name: common tasks
+  import_playbook: common_master.yml
+- name: database
+  import_playbook: db_master.yml
+- name: appserver
+  import_playbook: app_master.yml
+- name: load Balancer
+  import_playbook: lb_master.yml
