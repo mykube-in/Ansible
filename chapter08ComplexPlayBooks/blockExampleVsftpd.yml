@@ -1,0 +1,94 @@
+---
+- name: "this playbook teach you how to use blocks \n  1. Install vsftpd package \n  2. backup of /etc/vsftpd/vsftpd.conf \n  3. Copy vsftpd.j2 jinja template from controller node to the managed node \n  4. Intentionally fail the block by trying to access incorrect location"
+  #become: True
+  #become_user: root
+  gather_facts: True
+  hosts: localhost
+  vars:
+    dated : "{{lookup('pipe', 'date +%Y%m%d-%H%M')}}"
+    config_file: /etc/vsftpd/vsftpd.conf
+    bkp_config_file: /etc/vsftpd/vsftpd.conf."{{dated}}"
+    anonymous_enable: yes
+    local_enable: yes
+    write_enable: yes
+    anon_upload_enable: yes
+  tasks:
+    - block:
+        - name: installing vsftpd
+          yum:
+            name: vsftpd
+            state: present
+        - name: check exitence of file and string result in stat_result variable
+          stat:
+            path: "{{config_file}}"
+          register: stat_result
+        - name: "display result of previous task stored in variable stat_result"
+          debug:
+            msg: "{{config_file}}"
+          when: 
+            - (stat_result.stat.exists is defined and stat_result.stat.exists == True) 
+        - name: take backup of config file.
+          copy:
+            src: "{{config_file}}"
+            dest: "{{bkp_config_file}}"
+            remote_src: yes
+          delegate_to: localhost
+          when:
+            - (stat_result.stat.exists is defined and stat_result.stat.exists == True)
+        - name: use Jinja2 template to configure vsftpd
+          template:
+            src: vsftpd.j2
+            dest: "{{config_file}}"
+        - name: This will fail
+          command: "ls -l /tmp/does-not-exist"
+      
+      rescue:
+        - name: Recovery block
+          debug:
+            msg: "something failed, restoring vsftpd.conf from backup"
+
+        - name: Restoring vsftpd.conf
+          copy:
+            src: "{{bkp_config_file}}"
+            dest: "{{config_file}}"
+            remote_src: yes
+          delegate_to: localhost
+
+        - name: check value of listen=No inside "{{config_file}}"
+          shell: cat "{{config_file}}" | grep -i listen=YES
+          register: cmd_result
+          changed_when: cmd_result.rc != 0
+          ignore_errors: yes
+
+        - name: echo value of cmd_result.rc
+          debug:
+            msg: "unable to find listen=YES in {{config_file}} hence file will be backed up & modified"
+          when: cmd_result.rc != 0
+
+        - name:  echo value of cmd_result.rc
+          debug:
+            msg: " no changes are required in {{config_file}} "
+          when: cmd_result.rc == 0
+
+        - name: making change in file.listen=No to listen=YES
+          replace:
+            path: "{{config_file}}"
+            regexp: '^listen=NO'
+            #do not use "^listen=YES" it means ^listen=YES text will get written in file
+            replace: '^listen=YES' 
+            backup: yes
+          register: replace_result
+          when: cmd_result.rc != 0
+
+        - name: "remove ipv6 configuration from file {{config_file}}"
+          lineinfile:
+            dest: "{{config_file}}"
+            regexp: "^listen_ipv6=YES"
+            state: absent
+
+      always:
+        - name: Restarting vsftpd
+          service:
+            name: vsftpd
+            state: restarted
+      become: True

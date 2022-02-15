@@ -1,0 +1,184 @@
+# https://www.middlewareinventory.com/blog/ansible-wait_for-examples
+---
+- name: importance of gather_facts = True
+  hosts: all
+  become: True
+  gather_facts: True
+  tasks:
+    - name: DATE&TIME
+      debug: >
+        msg=ansible_date_time-->{{ansible_date_time}}
+
+    - name: GRUB display ansible_cmdline.BOOT_IMAGE
+      debug: >
+        msg=BOOT_IMAGE-->{{ansible_cmdline.BOOT_IMAGE}}
+
+    - name: GRUB display IPV6 Enabled Disabled
+      debug: >
+        msg="IPV6 Status-->{{ansible_cmdline['ipv6.disable']}}"
+
+    - name: GRUB UID of root disk
+      debug: >
+        msg="root disk UUID-->{{ansible_cmdline['root']}}"
+
+
+    - name: NETWORK IPV4
+      debug: >
+        msg="NETWORK-->{{ansible_default_ipv4}}"
+
+        
+    - name: ALL DISKS UUID
+      debug: >
+        msg="All DISKS UUID-->{{ansible_device_links.uuids}}"
+
+
+    - name: display the collected facts
+      debug: >
+        msg=ansible_distribution-->{{ansible_distribution}}
+
+    - name: display the  ansible_facts.key as ansible_facts is dictionary
+      debug: >
+        msg=ansible_facts.distribution_version-->{{ansible_facts.distribution_version}}
+
+    - name: value of ansible_facts.ansible_all_ipv4_addresses
+      debug: >
+        msg=ansible_all_ipv4_addresses-->{{ansible_all_ipv4_addresses}}
+
+    - name: value of ansible_facts.ansible_architecture
+      debug: >
+        msg=ansible_architecture-->{{ansible_architecture}}
+
+    - name: check value of ansible_os_family 
+      debug: >
+        msg=ansible_os_family-->{{ansible_os_family }}
+    - name: value of ansible_facts.ansible_processor
+      debug: >
+        msg=ansible_processor={{ ansible_processor }}
+    - name: value of ansible_facts.ansible_processor_cores
+      debug: >
+        msg=ansible_processor_cores={{ ansible_processor_cores }}
+    - name: value of ansible_facts.ansible_processor_count
+      debug: >
+        msg=ansible_processor_count={{ ansible_processor_count }}
+    - name: value of ansible_facts.ansible_processor_nproc
+      debug: >
+        msg=ansible_processor_nproc={{ ansible_processor_nproc }}
+    - name: value of ansible_facts.ansible_processor_threads_per_core
+      debug: >
+        msg=ansible_processor_threads_per_core={{ ansible_processor_threads_per_core }}
+    - name: value of ansible_facts.ansible_processor_vcpus
+      debug: >
+        msg=ansible_processor_vcpus={{ ansible_processor_vcpus }}
+    - name: value of ansible_facts.ansible_product_name
+      debug: >
+        msg=ansible_product_name={{ ansible_product_name }}
+    - name: value of ansible_facts.ansible_product_serial
+      debug: >
+        msg=ansible_product_serial={{ ansible_product_serial }}
+    - name: value of ansible_facts.ansible_product_uuid
+      debug: >
+        msg=ansible_product_uuid={{ ansible_product_uuid }}
+    - name: value of ansible_facts.ansible_product_version
+      debug: >
+        msg=ansible_product_version={{ ansible_product_version }}
+    - name: value of ansible_facts.ansible_python
+      debug: >
+        msg=ansible_python={{ ansible_python }}
+    - name: value of ansible_facts.ansible_python_version
+      debug: >
+        msg=ansible_python_version={{ ansible_python_version }}
+    - name: value of ansible_facts.ansible_real_group_id
+      debug: >
+        msg=ansible_real_group_id={{ ansible_real_group_id }}
+    - name: value of ansible_facts.ansible_real_user_id
+      debug: >
+        msg=ansible_real_user_id={{ ansible_real_user_id }}
+    - name: value of ansible_facts.ansible_selinux
+      debug: >
+        msg=ansible_selinux={{ ansible_selinux }}
+    - name: value of ansible_facts.ansible_selinux_python_present
+      debug: >
+        msg=ansible_selinux_python_present={{ ansible_selinux_python_present }}
+    - name: value of ansible_facts.ansible_service_mgr
+      debug: >
+        msg=ansible_service_mgr={{ ansible_service_mgr }}
+    - name: value of ansible_facts.ansible_ssh_host_key_ecdsa_public
+      debug: >
+        msg=ansible_ssh_host_key_ecdsa_public={{ ansible_ssh_host_key_ecdsa_public }}
+    - name: value of ansible_facts.ansible_ssh_host_key_ecdsa_public_keytype
+      debug: >
+        msg=ansible_ssh_host_key_ecdsa_public_keytype={{ ansible_ssh_host_key_ecdsa_public_keytype }}
+    - name: value of ansible_facts.ansible_ssh_host_key_ed25519_public
+      debug: >
+        msg=ansible_ssh_host_key_ed25519_public={{ ansible_ssh_host_key_ed25519_public }}
+    - name: value of ansible_facts.ansible_ssh_host_key_ed25519_public_keytype
+      debug: >
+        msg=ansible_ssh_host_key_ed25519_public_keytype={{ ansible_ssh_host_key_ed25519_public_keytype }}
+    - name: value of ansible_facts.ansible_ssh_host_key_rsa_public
+      debug: >
+        msg=ansible_ssh_host_key_rsa_public={{ ansible_ssh_host_key_rsa_public }}
+    - name: value of ansible_facts.ansible_ssh_host_key_rsa_public_keytype
+      debug: >
+        msg=ansible_ssh_host_key_rsa_public_keytype={{ ansible_ssh_host_key_rsa_public_keytype }}
+    - name: value of ansible_facts.ansible_swapfree_mb
+      debug: >
+        msg=ansible_swapfree_mb={{ ansible_swapfree_mb }}
+    - name: value of ansible_facts.ansible_swaptotal_mb
+      debug: >
+        msg=ansible_swaptotal_mb={{ ansible_swaptotal_mb }}
+    - name: value of ansible_facts.ansible_system
+      debug: >
+        msg=ansible_system={{ ansible_system }}
+    - name: value of ansible_facts.ansible_system_capabilities
+      debug: >
+        msg=ansible_system_capabilities={{ ansible_system_capabilities }}
+    - name: value of ansible_facts.ansible_system_capabilities_enforced
+      debug: >
+        msg=ansible_system_capabilities_enforced={{ ansible_system_capabilities_enforced }}
+    - name: value of ansible_facts.ansible_system_vendor
+      debug: >
+        msg=ansible_system_vendor={{ ansible_system_vendor }}
+    - name: value of ansible_facts.ansible_uptime_seconds
+      debug: >
+        msg=ansible_uptime_seconds={{ ansible_uptime_seconds }}
+    - name: value of ansible_facts.ansible_user_dir
+      debug: >
+        msg=ansible_user_dir={{ ansible_user_dir }}
+    - name: value of ansible_facts.ansible_user_gecos
+      debug: >
+        msg=ansible_user_gecos={{ ansible_user_gecos }}
+    - name: value of ansible_facts.ansible_user_gid
+      debug: >
+        msg=ansible_user_gid={{ ansible_user_gid }}
+    - name: value of ansible_facts.ansible_user_id
+      debug: >
+        msg=ansible_user_id={{ ansible_user_id }}
+    - name: value of ansible_facts.ansible_user_shell
+      debug: >
+        msg=ansible_user_shell={{ ansible_user_shell }}
+    - name: value of ansible_facts.ansible_user_uid
+      debug: >
+        msg=ansible_user_uid={{ ansible_user_uid }}
+    - name: value of ansible_facts.ansible_userspace_architecture
+      debug: >
+        msg=ansible_userspace_architecture={{ ansible_userspace_architecture }}
+    - name: value of ansible_facts.ansible_userspace_bits
+      debug: >
+        msg=ansible_userspace_bits={{ ansible_userspace_bits }}
+    - name: value of ansible_facts.ansible_virtualization_role
+      debug: >
+        msg=ansible_virtualization_role={{ ansible_virtualization_role }}
+    - name: value of ansible_facts.ansible_virtualization_type
+      debug: >
+        msg=ansible_virtualization_type={{ ansible_virtualization_type }}
+    - name: value of ansible_facts.discovered_interpreter_python
+      debug: >
+        msg=discovered_interpreter_python={{ discovered_interpreter_python }}
+    - name: value of ansible_facts.gather_subset
+      debug: >
+        msg=gather_subset={{ gather_subset }}
+    - name: value of ansible_facts.module_setup
+      debug: >
+        msg=module_setup={{ module_setup }}
+
+

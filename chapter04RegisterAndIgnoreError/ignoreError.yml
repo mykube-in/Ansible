@@ -1,0 +1,12 @@
+---
+- name: You can ignore the error so playbook should continue
+  hosts: all
+  gather_facts: False
+  tasks:
+    - name: cat the file which does not exist
+      command: cat /thisFileDoesNotExisit.txt
+      register: fileContents
+      ignore_errors: yes
+    - name: we will try to display error msg which came above
+      debug: > 
+        msg="HereAreFileContents={{ fileContents.stderr}}"

@@ -1,0 +1,9 @@
+---
+- name: use motd role playbook
+  hosts: localhost
+  user: ansible
+  become: true
+
+  roles:
+    - role: motd
+      #system_manager: "{{system_manager}}"

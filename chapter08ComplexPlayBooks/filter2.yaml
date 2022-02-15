@@ -1,0 +1,48 @@
+---
+- name: this playbook explains how to grep value from the variable output  using select filter
+  hosts: localhost
+  become: True
+  gather_facts: True
+  vars: 
+    my_var : somevalue
+    var_name: peter
+    number_list1: 
+      - 1
+      - 2
+      - 3
+    number_list2: [3, 4, 5]
+  tasks:
+    - name: this task is to understand what interface we have in linux server.
+      set_fact:
+        interfaces_list: "{{ ansible_interfaces | select('match', '^(eth|wlan)[0-9]+') | map('upper')| list }}"
+    - name: this task is to display fact we have gathered in variable interfaces_list i.e 
+      debug :
+        msg: The interface's list on "{{ ansible_hostname }}" is "{{interfaces_list}}"
+    - name: check the hash of some string or data
+      debug:
+        msg: hash value of "{{my_var}}" is "{{ my_var | hash('sha1') }}"
+    - name: put quotes on your string
+      debug:
+        msg: "{{ my_var | quote }}"
+        #- name: true or false
+        #set_fact:
+        #gender: "{{ (var_name == 'peter') | ternary('male’, ‘female') }}"
+        #- name: put quotes on your string
+        #debug:
+        #msg: value = {{ternary}}
+    - name: select max value
+      set_fact:
+        result_max: "{{ [3, 4, 2] | max }}"
+        result_min: "{{ [3, 4, 2] | min }}"
+        flattern_var: "{{ [3, [4, 2] ] | flatten }}"
+        flattern_var_level1: "{{ [3, [4, [2]] ] | flatten(levels=1) }}"
+    - name: display value
+      debug:
+        msg: max-value =  "{{result_max}}" and  min-value =  "{{result_min}}" and flattern-var = "{{flattern_var}}" and flattern-var-level1 = "{{flattern_var_level1}}"
+    - name: use just “+” operator to combine two lists into one
+      set_fact:
+        combined_list: "{{number_list1 + number_list2}} + [ 'element', 'element2' ]"
+    - name: printing combined list
+      debug:
+        msg: value of combined list = "{{combined_list}}"
+

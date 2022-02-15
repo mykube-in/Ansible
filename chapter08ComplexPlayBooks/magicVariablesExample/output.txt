@@ -1,0 +1,2 @@
+nat8 with IP 10.10.0.5
+2 is NS1 with IP 10.10.192.8

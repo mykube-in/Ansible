@@ -1,0 +1,36 @@
+# https://www.middlewareinventory.com/blog/ansible-wait_for-examples
+---
+- name: importance of gather_facts = True
+  hosts: localhost
+  connection: local
+  become: True
+  gather_facts: True
+  tasks:
+    # Print the Dictionary
+    - name: printing the mount points
+      debug:
+        msg: "{{item.device}}"
+      with_items: "{{ansible_mounts}}"
+
+
+    # Parsing through Variable Dictionary
+    - debug:
+        msg: "Mount Point {{item.mount}} is at {{item.block_used/item.block_total*100}} percent "
+      loop: "{{ansible_mounts}}"
+
+    - debug:
+        msg: "value of variable ansible_hostname-->{{ansible_hostname}}"
+
+    # Execute Host based task using variable
+    - name: Execute the command only on ns01 server
+      become: yes
+      become_user: root 
+      shell: "uptime"
+      when:  "ansible_hostname|string  == 'AMITSUNEJA'" # DoNot Use Jinja template format in condition
+      register: uptimeOfServer
+
+    - name: "uptime of {{ ansible_hostname }}"
+      debug: 
+        msg: "uptime --> {{uptimeOfServer.stdout_lines}}"
+
+       

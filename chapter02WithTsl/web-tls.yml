@@ -1,0 +1,115 @@
+---
+ - name: this play is for generating cerfiticate on localserver for to be used by web server.
+   hosts: localhost
+   connection: local
+   gather_facts: false
+   tasks:
+     - name: step 1 is necessary to Generate private key(key file)
+       openssl_privatekey:
+         path: ./files/nginx.key
+         size: 2048 
+     - name: step 2 use the private key to Generate Certificate Signing Request(CSR file)
+       openssl_csr:
+         path: ./files/nginx.csr
+         privatekey_path: ./files/nginx.key
+     - name: Step 3 use the private key and CSR to Generate a Self Signed certificate.(crt file)
+       openssl_certificate:
+         provider: selfsigned
+         path: ./files/nginx.crt
+         privatekey_path: ./files/nginx.key
+         csr_path: ./files/nginx.csr
+         selfsigned_not_after: "+5d"
+         force: True
+ - name: This play is for configuring nginx web server with  TLS on Centos Servers
+   hosts: centosgrp
+   become: True
+   become_user: root
+   gather_facts: True
+   vars:
+     my_file: /etc/resolv.conf
+     server_name: localhost
+     key_file: /etc/nginx/ssl/nginx.key
+     cert_file: /etc/nginx/ssl/nginx.crt
+     conf_file: /etc/nginx/sites-available/default
+   tasks:
+      - name: Ensure resolv.conf is immutable.
+        file:
+          path: "{{ my_file }}"
+          attr: +i
+        register: resolv_file
+        changed_when:
+          - resolv_file.diff.before.attributes is defined
+          - "'i' not in resolv_file.diff.before.attributes"
+      - name: Install nginx
+        yum:
+          name: nginx
+          state: present
+
+      - name: create directories for TLS certificates
+        file: 
+          path: /etc/nginx/ssl 
+          state: directory
+
+      - name: create folder sites-enabled inside /etc/nginx
+        file:
+          path: /etc/nginx/sites-enabled
+          state: directory
+      - name: create folder sites-available inside /etc/nginx
+        file:
+          path: /etc/nginx/sites-available
+          state: directory
+      - name: copy TLS key
+        copy: 
+          src: files/nginx.key 
+          dest: "{{ key_file }}" 
+          owner: root 
+          mode: 0600
+        notify: restart nginx
+      - name: copy TLS certificate
+        copy: 
+          src: files/nginx.crt 
+          dest: "{{ cert_file }}"
+        notify: restart nginx
+
+      - name: copy nginx config file
+        template:
+          src: templates/nginx.conf
+          dest: /etc/nginx/nginx.conf
+      - name: copy template nginx config file
+        template:
+          src: templates/nginx.conf.j2
+          dest: /etc/nginx/sites-available/default
+      - name: enable configuration
+        file:
+          dest: /etc/nginx/sites-enabled/default
+          src: /etc/nginx/sites-available/default
+          state: link
+      - name: copy index.html
+        template:
+          src: templates/index.html.j2
+          dest: /usr/share/nginx/html/index.html
+          mode: 0644
+        notify: restart nginx
+      - name: enabling port number 443 in firewall so that application user can connect.
+        firewalld:
+          port: 443/tcp
+          permanent: yes
+          state: enabled
+        notify:
+          - restart the firewall
+      - name: adding http service to firewall
+        firewalld:
+          service: https
+          permanent: yes
+          state: enabled
+        notify:
+          - restart the firewall
+   handlers:
+     - name: restart nginx
+       service:
+         name: nginx
+         state: restarted
+     - name: restart the firewall
+       service:
+         name: firewalld
+         state: reloaded

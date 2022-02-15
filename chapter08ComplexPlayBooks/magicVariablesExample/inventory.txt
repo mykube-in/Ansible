@@ -1,0 +1,7 @@
+DOCKER01
+[Group01]
+nat8 ansible_connection=local
+JENKINS
+[Unix_SPL_Group]
+nat8 ansible_connection=local
+NS1

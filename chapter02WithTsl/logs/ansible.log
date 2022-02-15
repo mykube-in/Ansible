@@ -1,0 +1,716 @@
+2021-08-09 19:09:10,719 p=17456 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 19:09:10,769 p=17456 u=unix n=ansible | TASK [this task is to generate cerfiticate on localserver] ***********************************************************
+2021-08-09 19:09:14,385 p=17456 u=unix n=ansible | fatal: [localhost]: FAILED! => {"changed": true, "cmd": "openssl req -x509 -days 3650 -newkey rsa:2048 -subj /CN=localhost -keyout files/nginx.key -out files/nginx.crt", "delta": "0:00:03.087362", "end": "2021-08-09 19:09:14.348875", "msg": "non-zero return code", "rc": 1, "start": "2021-08-09 19:09:11.261513", "stderr": "Generating a RSA private key\n.+++++\n......................+++++\nwriting new private key to 'files/nginx.key'\n140160117134656:error:28078065:UI routines:UI_set_result_ex:result too small:../crypto/ui/ui_lib.c:905:You must type in 4 to 1024 characters\n140160117134656:error:2807106B:UI routines:UI_process:processing error:../crypto/ui/ui_lib.c:545:while reading strings\n140160117134656:error:0906406D:PEM routines:PEM_def_callback:problems getting password:../crypto/pem/pem_lib.c:59:\n140160117134656:error:0907E06F:PEM routines:do_pk8pkey:read key:../crypto/pem/pem_pk8.c:83:", "stderr_lines": ["Generating a RSA private key", ".+++++", "......................+++++", "writing new private key to 'files/nginx.key'", "140160117134656:error:28078065:UI routines:UI_set_result_ex:result too small:../crypto/ui/ui_lib.c:905:You must type in 4 to 1024 characters", "140160117134656:error:2807106B:UI routines:UI_process:processing error:../crypto/ui/ui_lib.c:545:while reading strings", "140160117134656:error:0906406D:PEM routines:PEM_def_callback:problems getting password:../crypto/pem/pem_lib.c:59:", "140160117134656:error:0907E06F:PEM routines:do_pk8pkey:read key:../crypto/pem/pem_pk8.c:83:"], "stdout": "", "stdout_lines": []}
+2021-08-09 19:09:14,388 p=17456 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 19:09:14,389 p=17456 u=unix n=ansible | localhost                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 19:23:07,717 p=17666 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 19:23:07,757 p=17666 u=unix n=ansible | TASK [openssl_privatekey] ********************************************************************************************
+2021-08-09 19:23:08,446 p=17666 u=unix n=ansible | changed: [localhost]
+2021-08-09 19:23:08,465 p=17666 u=unix n=ansible | TASK [openssl_csr] ***************************************************************************************************
+2021-08-09 19:23:09,147 p=17666 u=unix n=ansible | changed: [localhost]
+2021-08-09 19:23:09,172 p=17666 u=unix n=ansible | TASK [openssl_certificate] *******************************************************************************************
+2021-08-09 19:23:10,040 p=17666 u=unix n=ansible | changed: [localhost]
+2021-08-09 19:23:10,045 p=17666 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 19:23:10,046 p=17666 u=unix n=ansible | localhost                  : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 19:23:16,211 p=17750 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 19:23:16,257 p=17750 u=unix n=ansible | TASK [openssl_privatekey] ********************************************************************************************
+2021-08-09 19:23:16,868 p=17750 u=unix n=ansible | ok: [localhost]
+2021-08-09 19:23:16,888 p=17750 u=unix n=ansible | TASK [openssl_csr] ***************************************************************************************************
+2021-08-09 19:23:17,554 p=17750 u=unix n=ansible | ok: [localhost]
+2021-08-09 19:23:17,573 p=17750 u=unix n=ansible | TASK [openssl_certificate] *******************************************************************************************
+2021-08-09 19:23:18,402 p=17750 u=unix n=ansible | ok: [localhost]
+2021-08-09 19:23:18,407 p=17750 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 19:23:18,408 p=17750 u=unix n=ansible | localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 19:29:25,330 p=17922 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 19:29:25,368 p=17922 u=unix n=ansible | TASK [openssl_privatekey] ********************************************************************************************
+2021-08-09 19:29:26,084 p=17922 u=unix n=ansible | changed: [localhost]
+2021-08-09 19:29:26,102 p=17922 u=unix n=ansible | TASK [openssl_csr] ***************************************************************************************************
+2021-08-09 19:29:26,787 p=17922 u=unix n=ansible | changed: [localhost]
+2021-08-09 19:29:26,807 p=17922 u=unix n=ansible | TASK [openssl_certificate] *******************************************************************************************
+2021-08-09 19:29:27,648 p=17922 u=unix n=ansible | changed: [localhost]
+2021-08-09 19:29:27,652 p=17922 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 19:29:27,653 p=17922 u=unix n=ansible | localhost                  : ok=3    changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 19:29:35,679 p=18014 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 19:29:35,718 p=18014 u=unix n=ansible | TASK [openssl_privatekey] ********************************************************************************************
+2021-08-09 19:29:36,334 p=18014 u=unix n=ansible | ok: [localhost]
+2021-08-09 19:29:36,353 p=18014 u=unix n=ansible | TASK [openssl_csr] ***************************************************************************************************
+2021-08-09 19:29:36,989 p=18014 u=unix n=ansible | ok: [localhost]
+2021-08-09 19:29:37,009 p=18014 u=unix n=ansible | TASK [openssl_certificate] *******************************************************************************************
+2021-08-09 19:29:37,827 p=18014 u=unix n=ansible | ok: [localhost]
+2021-08-09 19:29:37,832 p=18014 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 19:29:37,833 p=18014 u=unix n=ansible | localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 19:33:38,091 p=18134 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 19:33:38,135 p=18134 u=unix n=ansible | TASK [step 1 is necessary to Generate private key(key file)] *********************************************************
+2021-08-09 19:33:38,733 p=18134 u=unix n=ansible | ok: [localhost]
+2021-08-09 19:33:38,753 p=18134 u=unix n=ansible | TASK [step 2 use the private key to Generate Certificate Signing Request(CSR file)] **********************************
+2021-08-09 19:33:39,426 p=18134 u=unix n=ansible | ok: [localhost]
+2021-08-09 19:33:39,443 p=18134 u=unix n=ansible | TASK [Step 3 use the private key and CSR to Generate a Self Signed certificate.(crt file)] ***************************
+2021-08-09 19:33:40,251 p=18134 u=unix n=ansible | ok: [localhost]
+2021-08-09 19:33:40,257 p=18134 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 19:33:40,257 p=18134 u=unix n=ansible | localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 19:35:48,836 p=18239 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 19:35:48,877 p=18239 u=unix n=ansible | TASK [step 1 is necessary to Generate private key(key file)] *********************************************************
+2021-08-09 19:35:49,475 p=18239 u=unix n=ansible | ok: [localhost]
+2021-08-09 19:35:49,499 p=18239 u=unix n=ansible | TASK [step 2 use the private key to Generate Certificate Signing Request(CSR file)] **********************************
+2021-08-09 19:35:50,171 p=18239 u=unix n=ansible | ok: [localhost]
+2021-08-09 19:35:50,190 p=18239 u=unix n=ansible | TASK [Step 3 use the private key and CSR to Generate a Self Signed certificate.(crt file)] ***************************
+2021-08-09 19:35:51,020 p=18239 u=unix n=ansible | changed: [localhost]
+2021-08-09 19:35:51,024 p=18239 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 19:35:51,025 p=18239 u=unix n=ansible | localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 19:36:30,152 p=18342 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 19:36:30,192 p=18342 u=unix n=ansible | TASK [step 1 is necessary to Generate private key(key file)] *********************************************************
+2021-08-09 19:36:30,792 p=18342 u=unix n=ansible | ok: [localhost]
+2021-08-09 19:36:30,814 p=18342 u=unix n=ansible | TASK [step 2 use the private key to Generate Certificate Signing Request(CSR file)] **********************************
+2021-08-09 19:36:31,458 p=18342 u=unix n=ansible | ok: [localhost]
+2021-08-09 19:36:31,475 p=18342 u=unix n=ansible | TASK [Step 3 use the private key and CSR to Generate a Self Signed certificate.(crt file)] ***************************
+2021-08-09 19:36:32,331 p=18342 u=unix n=ansible | [DEPRECATION WARNING]: Param 'has_expired' is deprecated. See the module docs for more information. This feature will
+ be removed in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in 
+ansible.cfg.
+2021-08-09 19:36:32,332 p=18342 u=unix n=ansible | changed: [localhost]
+2021-08-09 19:36:32,337 p=18342 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 19:36:32,338 p=18342 u=unix n=ansible | localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 19:38:05,443 p=18467 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 19:38:05,484 p=18467 u=unix n=ansible | TASK [step 1 is necessary to Generate private key(key file)] *********************************************************
+2021-08-09 19:38:06,089 p=18467 u=unix n=ansible | ok: [localhost]
+2021-08-09 19:38:06,111 p=18467 u=unix n=ansible | TASK [step 2 use the private key to Generate Certificate Signing Request(CSR file)] **********************************
+2021-08-09 19:38:06,760 p=18467 u=unix n=ansible | ok: [localhost]
+2021-08-09 19:38:06,781 p=18467 u=unix n=ansible | TASK [Step 3 use the private key and CSR to Generate a Self Signed certificate.(crt file)] ***************************
+2021-08-09 19:38:07,632 p=18467 u=unix n=ansible | [DEPRECATION WARNING]: Param 'valid_at' is deprecated. See the module docs for more information. This feature will be
+ removed in version 2.13. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+2021-08-09 19:38:07,633 p=18467 u=unix n=ansible | changed: [localhost]
+2021-08-09 19:38:07,639 p=18467 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 19:38:07,640 p=18467 u=unix n=ansible | localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 19:46:05,056 p=18603 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 19:46:05,102 p=18603 u=unix n=ansible | TASK [step 1 is necessary to Generate private key(key file)] *********************************************************
+2021-08-09 19:46:05,715 p=18603 u=unix n=ansible | ok: [localhost]
+2021-08-09 19:46:05,730 p=18603 u=unix n=ansible | TASK [step 2 use the private key to Generate Certificate Signing Request(CSR file)] **********************************
+2021-08-09 19:46:06,373 p=18603 u=unix n=ansible | ok: [localhost]
+2021-08-09 19:46:06,390 p=18603 u=unix n=ansible | TASK [Step 3 use the private key and CSR to Generate a Self Signed certificate.(crt file)] ***************************
+2021-08-09 19:46:07,243 p=18603 u=unix n=ansible | changed: [localhost]
+2021-08-09 19:46:07,247 p=18603 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 19:46:07,248 p=18603 u=unix n=ansible | localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 19:50:24,588 p=18717 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  but found another document
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02WithTsl/web-tls.yml': line 25, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+         force: True
+---
+^ here
+
+2021-08-09 19:50:54,515 p=18745 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 19:50:54,554 p=18745 u=unix n=ansible | TASK [step 1 is necessary to Generate private key(key file)] *********************************************************
+2021-08-09 19:50:55,155 p=18745 u=unix n=ansible | ok: [localhost]
+2021-08-09 19:50:55,173 p=18745 u=unix n=ansible | TASK [step 2 use the private key to Generate Certificate Signing Request(CSR file)] **********************************
+2021-08-09 19:50:55,826 p=18745 u=unix n=ansible | ok: [localhost]
+2021-08-09 19:50:55,841 p=18745 u=unix n=ansible | TASK [Step 3 use the private key and CSR to Generate a Self Signed certificate.(crt file)] ***************************
+2021-08-09 19:50:56,697 p=18745 u=unix n=ansible | changed: [localhost]
+2021-08-09 19:50:56,703 p=18745 u=unix n=ansible | PLAY [This play is for configuring nginx web server with  TLS on Centos Servers] *************************************
+2021-08-09 19:50:56,727 p=18745 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 19:51:01,000 p=18745 u=unix n=ansible | ok: [centos02]
+2021-08-09 19:51:05,480 p=18745 u=unix n=ansible | ok: [centos01]
+2021-08-09 19:51:05,513 p=18745 u=unix n=ansible | TASK [this name] *****************************************************************************************************
+2021-08-09 19:51:05,556 p=18745 u=unix n=ansible | ok: [centos01] => {
+    "myvar": 123456789
+}
+2021-08-09 19:51:05,569 p=18745 u=unix n=ansible | ok: [centos02] => {
+    "myvar": 123456789
+}
+2021-08-09 19:51:05,573 p=18745 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 19:51:05,574 p=18745 u=unix n=ansible | centos01                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 19:51:05,575 p=18745 u=unix n=ansible | centos02                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 19:51:05,575 p=18745 u=unix n=ansible | localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 20:01:48,450 p=18919 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02WithTsl/web-tls.yml': line 38, column 10, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+       path: "{{ my_file }}"
+         attr: +i
+         ^ here
+
+2021-08-09 20:02:31,075 p=18945 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 20:02:31,120 p=18945 u=unix n=ansible | TASK [step 1 is necessary to Generate private key(key file)] *********************************************************
+2021-08-09 20:02:31,722 p=18945 u=unix n=ansible | ok: [localhost]
+2021-08-09 20:02:31,741 p=18945 u=unix n=ansible | TASK [step 2 use the private key to Generate Certificate Signing Request(CSR file)] **********************************
+2021-08-09 20:02:32,408 p=18945 u=unix n=ansible | ok: [localhost]
+2021-08-09 20:02:32,429 p=18945 u=unix n=ansible | TASK [Step 3 use the private key and CSR to Generate a Self Signed certificate.(crt file)] ***************************
+2021-08-09 20:02:33,282 p=18945 u=unix n=ansible | changed: [localhost]
+2021-08-09 20:02:33,291 p=18945 u=unix n=ansible | PLAY [This play is for configuring nginx web server with  TLS on Centos Servers] *************************************
+2021-08-09 20:02:33,320 p=18945 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 20:02:37,471 p=18945 u=unix n=ansible | ok: [centos02]
+2021-08-09 20:02:41,455 p=18945 u=unix n=ansible | ok: [centos01]
+2021-08-09 20:02:41,485 p=18945 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 20:02:41,566 p=18945 u=unix n=ansible | fatal: [centos01]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'my_file' is undefined\n\nThe error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02WithTsl/web-tls.yml': line 36, column 8, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n   tasks:\n     - name: Ensure resolv.conf is immutable.\n       ^ here\n"}
+2021-08-09 20:02:41,599 p=18945 u=unix n=ansible | fatal: [centos02]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'my_file' is undefined\n\nThe error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02WithTsl/web-tls.yml': line 36, column 8, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n   tasks:\n     - name: Ensure resolv.conf is immutable.\n       ^ here\n"}
+2021-08-09 20:02:41,601 p=18945 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 20:02:41,602 p=18945 u=unix n=ansible | centos01                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 20:02:41,603 p=18945 u=unix n=ansible | centos02                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 20:02:41,603 p=18945 u=unix n=ansible | localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 20:03:49,860 p=19077 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 20:03:49,904 p=19077 u=unix n=ansible | TASK [step 1 is necessary to Generate private key(key file)] *********************************************************
+2021-08-09 20:03:50,529 p=19077 u=unix n=ansible | ok: [localhost]
+2021-08-09 20:03:50,548 p=19077 u=unix n=ansible | TASK [step 2 use the private key to Generate Certificate Signing Request(CSR file)] **********************************
+2021-08-09 20:03:51,228 p=19077 u=unix n=ansible | ok: [localhost]
+2021-08-09 20:03:51,246 p=19077 u=unix n=ansible | TASK [Step 3 use the private key and CSR to Generate a Self Signed certificate.(crt file)] ***************************
+2021-08-09 20:03:52,200 p=19077 u=unix n=ansible | changed: [localhost]
+2021-08-09 20:03:52,206 p=19077 u=unix n=ansible | PLAY [This play is for configuring nginx web server with  TLS on Centos Servers] *************************************
+2021-08-09 20:03:52,232 p=19077 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 20:03:55,955 p=19077 u=unix n=ansible | ok: [centos02]
+2021-08-09 20:04:00,397 p=19077 u=unix n=ansible | ok: [centos01]
+2021-08-09 20:04:00,429 p=19077 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 20:04:01,652 p=19077 u=unix n=ansible | fatal: [centos02]: FAILED! => {"changed": false, "msg": "Unsupported parameters for (file) module: register Supported parameters include: _diff_peek, _original_basename, access_time, access_time_format, attributes, backup, content, delimiter, directory_mode, follow, force, group, mode, modification_time, modification_time_format, owner, path, recurse, regexp, remote_src, selevel, serole, setype, seuser, src, state, unsafe_writes"}
+2021-08-09 20:04:01,686 p=19077 u=unix n=ansible | fatal: [centos01]: FAILED! => {"changed": false, "msg": "Unsupported parameters for (file) module: register Supported parameters include: _diff_peek, _original_basename, access_time, access_time_format, attributes, backup, content, delimiter, directory_mode, follow, force, group, mode, modification_time, modification_time_format, owner, path, recurse, regexp, remote_src, selevel, serole, setype, seuser, src, state, unsafe_writes"}
+2021-08-09 20:04:01,687 p=19077 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 20:04:01,688 p=19077 u=unix n=ansible | centos01                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 20:04:01,689 p=19077 u=unix n=ansible | centos02                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 20:04:01,689 p=19077 u=unix n=ansible | localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 20:06:24,944 p=19225 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02WithTsl/web-tls.yml': line 37, column 12, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+   - name: Ensure resolv.conf is immutable.
+       file:
+           ^ here
+
+2021-08-09 20:07:02,982 p=19251 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 20:07:03,022 p=19251 u=unix n=ansible | TASK [step 1 is necessary to Generate private key(key file)] *********************************************************
+2021-08-09 20:07:03,618 p=19251 u=unix n=ansible | ok: [localhost]
+2021-08-09 20:07:03,637 p=19251 u=unix n=ansible | TASK [step 2 use the private key to Generate Certificate Signing Request(CSR file)] **********************************
+2021-08-09 20:07:04,274 p=19251 u=unix n=ansible | ok: [localhost]
+2021-08-09 20:07:04,296 p=19251 u=unix n=ansible | TASK [Step 3 use the private key and CSR to Generate a Self Signed certificate.(crt file)] ***************************
+2021-08-09 20:07:05,154 p=19251 u=unix n=ansible | changed: [localhost]
+2021-08-09 20:07:05,159 p=19251 u=unix n=ansible | PLAY [This play is for configuring nginx web server with  TLS on Centos Servers] *************************************
+2021-08-09 20:07:05,183 p=19251 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 20:07:08,842 p=19251 u=unix n=ansible | ok: [centos01]
+2021-08-09 20:07:09,546 p=19251 u=unix n=ansible | ok: [centos02]
+2021-08-09 20:07:09,577 p=19251 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 20:07:10,849 p=19251 u=unix n=ansible | ok: [centos01]
+2021-08-09 20:07:10,857 p=19251 u=unix n=ansible | ok: [centos02]
+2021-08-09 20:07:10,860 p=19251 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 20:07:10,861 p=19251 u=unix n=ansible | centos01                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 20:07:10,861 p=19251 u=unix n=ansible | centos02                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 20:07:10,862 p=19251 u=unix n=ansible | localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 20:10:25,444 p=19444 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  did not find expected '-' indicator
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02WithTsl/web-tls.yml': line 56, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+       state: directory
+  - name: copy nginx config file
+  ^ here
+
+2021-08-09 20:10:50,974 p=19472 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 20:10:51,006 p=19472 u=unix n=ansible | TASK [step 1 is necessary to Generate private key(key file)] *********************************************************
+2021-08-09 20:10:51,583 p=19472 u=unix n=ansible | ok: [localhost]
+2021-08-09 20:10:51,598 p=19472 u=unix n=ansible | TASK [step 2 use the private key to Generate Certificate Signing Request(CSR file)] **********************************
+2021-08-09 20:10:52,213 p=19472 u=unix n=ansible | ok: [localhost]
+2021-08-09 20:10:52,227 p=19472 u=unix n=ansible | TASK [Step 3 use the private key and CSR to Generate a Self Signed certificate.(crt file)] ***************************
+2021-08-09 20:10:53,014 p=19472 u=unix n=ansible | changed: [localhost]
+2021-08-09 20:10:53,020 p=19472 u=unix n=ansible | PLAY [This play is for configuring nginx web server with  TLS on Centos Servers] *************************************
+2021-08-09 20:10:53,041 p=19472 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 20:10:56,839 p=19472 u=unix n=ansible | ok: [centos01]
+2021-08-09 20:10:57,175 p=19472 u=unix n=ansible | ok: [centos02]
+2021-08-09 20:10:57,209 p=19472 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 20:10:58,352 p=19472 u=unix n=ansible | ok: [centos01]
+2021-08-09 20:10:58,374 p=19472 u=unix n=ansible | ok: [centos02]
+2021-08-09 20:10:58,404 p=19472 u=unix n=ansible | TASK [Install nginx] *************************************************************************************************
+2021-08-09 20:11:01,208 p=19472 u=unix n=ansible | ok: [centos02]
+2021-08-09 20:11:01,215 p=19472 u=unix n=ansible | ok: [centos01]
+2021-08-09 20:11:01,242 p=19472 u=unix n=ansible | TASK [create folder sites-enabled inside /etc/nginx] *****************************************************************
+2021-08-09 20:11:02,181 p=19472 u=unix n=ansible | ok: [centos01]
+2021-08-09 20:11:02,206 p=19472 u=unix n=ansible | ok: [centos02]
+2021-08-09 20:11:02,238 p=19472 u=unix n=ansible | TASK [create folder sites-available inside /etc/nginx] ***************************************************************
+2021-08-09 20:11:03,189 p=19472 u=unix n=ansible | ok: [centos01]
+2021-08-09 20:11:03,207 p=19472 u=unix n=ansible | ok: [centos02]
+2021-08-09 20:11:03,237 p=19472 u=unix n=ansible | TASK [copy nginx config file] ****************************************************************************************
+2021-08-09 20:11:05,235 p=19472 u=unix n=ansible | ok: [centos02]
+2021-08-09 20:11:05,246 p=19472 u=unix n=ansible | ok: [centos01]
+2021-08-09 20:11:05,249 p=19472 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 20:11:05,250 p=19472 u=unix n=ansible | centos01                   : ok=6    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 20:11:05,250 p=19472 u=unix n=ansible | centos02                   : ok=6    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 20:11:05,251 p=19472 u=unix n=ansible | localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 21:44:30,101 p=20934 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  did not find expected '-' indicator
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02WithTsl/web-tls.yml': line 84, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+          - restart the firewall
+      handlers:
+      ^ here
+
+2021-08-09 21:45:28,159 p=20971 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  mapping values are not allowed in this context
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02WithTsl/web-tls.yml': line 90, column 17, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+     - name: restart the firewall
+         service:
+                ^ here
+
+2021-08-09 21:45:54,930 p=20986 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 21:45:54,969 p=20986 u=unix n=ansible | TASK [step 1 is necessary to Generate private key(key file)] *********************************************************
+2021-08-09 21:45:55,537 p=20986 u=unix n=ansible | ok: [localhost]
+2021-08-09 21:45:55,559 p=20986 u=unix n=ansible | TASK [step 2 use the private key to Generate Certificate Signing Request(CSR file)] **********************************
+2021-08-09 21:45:56,177 p=20986 u=unix n=ansible | ok: [localhost]
+2021-08-09 21:45:56,198 p=20986 u=unix n=ansible | TASK [Step 3 use the private key and CSR to Generate a Self Signed certificate.(crt file)] ***************************
+2021-08-09 21:45:56,999 p=20986 u=unix n=ansible | changed: [localhost]
+2021-08-09 21:45:57,006 p=20986 u=unix n=ansible | PLAY [This play is for configuring nginx web server with  TLS on Centos Servers] *************************************
+2021-08-09 21:45:57,033 p=20986 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 21:46:01,089 p=20986 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:46:04,935 p=20986 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:46:04,970 p=20986 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 21:46:06,077 p=20986 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:46:06,081 p=20986 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:46:06,115 p=20986 u=unix n=ansible | TASK [Install nginx] *************************************************************************************************
+2021-08-09 21:46:08,814 p=20986 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:46:08,824 p=20986 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:46:08,863 p=20986 u=unix n=ansible | TASK [create folder sites-enabled inside /etc/nginx] *****************************************************************
+2021-08-09 21:46:09,785 p=20986 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:46:09,829 p=20986 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:46:09,859 p=20986 u=unix n=ansible | TASK [create folder sites-available inside /etc/nginx] ***************************************************************
+2021-08-09 21:46:10,728 p=20986 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:46:10,748 p=20986 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:46:10,780 p=20986 u=unix n=ansible | TASK [copy nginx config file] ****************************************************************************************
+2021-08-09 21:46:12,528 p=20986 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:46:12,536 p=20986 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:46:12,570 p=20986 u=unix n=ansible | TASK [copy template nginx config file] *******************************************************************************
+2021-08-09 21:46:12,968 p=20986 u=unix n=ansible | fatal: [centos01]: FAILED! => {"changed": false, "msg": "AnsibleUndefinedVariable: 'server_name' is undefined"}
+2021-08-09 21:46:12,975 p=20986 u=unix n=ansible | fatal: [centos02]: FAILED! => {"changed": false, "msg": "AnsibleUndefinedVariable: 'server_name' is undefined"}
+2021-08-09 21:46:12,976 p=20986 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 21:46:12,977 p=20986 u=unix n=ansible | centos01                   : ok=6    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 21:46:12,977 p=20986 u=unix n=ansible | centos02                   : ok=6    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 21:46:12,978 p=20986 u=unix n=ansible | localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 21:47:57,440 p=21232 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 21:47:57,480 p=21232 u=unix n=ansible | TASK [step 1 is necessary to Generate private key(key file)] *********************************************************
+2021-08-09 21:47:58,058 p=21232 u=unix n=ansible | ok: [localhost]
+2021-08-09 21:47:58,079 p=21232 u=unix n=ansible | TASK [step 2 use the private key to Generate Certificate Signing Request(CSR file)] **********************************
+2021-08-09 21:47:58,718 p=21232 u=unix n=ansible | ok: [localhost]
+2021-08-09 21:47:58,741 p=21232 u=unix n=ansible | TASK [Step 3 use the private key and CSR to Generate a Self Signed certificate.(crt file)] ***************************
+2021-08-09 21:47:59,528 p=21232 u=unix n=ansible | changed: [localhost]
+2021-08-09 21:47:59,535 p=21232 u=unix n=ansible | PLAY [This play is for configuring nginx web server with  TLS on Centos Servers] *************************************
+2021-08-09 21:47:59,564 p=21232 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 21:48:03,132 p=21232 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:48:07,438 p=21232 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:48:07,478 p=21232 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 21:48:08,539 p=21232 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:48:08,559 p=21232 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:48:08,592 p=21232 u=unix n=ansible | TASK [Install nginx] *************************************************************************************************
+2021-08-09 21:48:11,342 p=21232 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:48:11,352 p=21232 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:48:11,383 p=21232 u=unix n=ansible | TASK [create folder sites-enabled inside /etc/nginx] *****************************************************************
+2021-08-09 21:48:12,286 p=21232 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:48:12,315 p=21232 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:48:12,348 p=21232 u=unix n=ansible | TASK [create folder sites-available inside /etc/nginx] ***************************************************************
+2021-08-09 21:48:13,229 p=21232 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:48:13,260 p=21232 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:48:13,294 p=21232 u=unix n=ansible | TASK [copy nginx config file] ****************************************************************************************
+2021-08-09 21:48:15,023 p=21232 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:48:15,024 p=21232 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:48:15,054 p=21232 u=unix n=ansible | TASK [copy template nginx config file] *******************************************************************************
+2021-08-09 21:48:15,477 p=21232 u=unix n=ansible | fatal: [centos01]: FAILED! => {"changed": false, "msg": "AnsibleUndefinedVariable: 'cert_file' is undefined"}
+2021-08-09 21:48:15,478 p=21232 u=unix n=ansible | fatal: [centos02]: FAILED! => {"changed": false, "msg": "AnsibleUndefinedVariable: 'cert_file' is undefined"}
+2021-08-09 21:48:15,479 p=21232 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 21:48:15,480 p=21232 u=unix n=ansible | centos01                   : ok=6    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 21:48:15,481 p=21232 u=unix n=ansible | centos02                   : ok=6    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 21:48:15,481 p=21232 u=unix n=ansible | localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 21:49:53,218 p=21490 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 21:49:53,252 p=21490 u=unix n=ansible | TASK [step 1 is necessary to Generate private key(key file)] *********************************************************
+2021-08-09 21:49:53,810 p=21490 u=unix n=ansible | ok: [localhost]
+2021-08-09 21:49:53,832 p=21490 u=unix n=ansible | TASK [step 2 use the private key to Generate Certificate Signing Request(CSR file)] **********************************
+2021-08-09 21:49:54,450 p=21490 u=unix n=ansible | ok: [localhost]
+2021-08-09 21:49:54,473 p=21490 u=unix n=ansible | TASK [Step 3 use the private key and CSR to Generate a Self Signed certificate.(crt file)] ***************************
+2021-08-09 21:49:55,274 p=21490 u=unix n=ansible | changed: [localhost]
+2021-08-09 21:49:55,279 p=21490 u=unix n=ansible | PLAY [This play is for configuring nginx web server with  TLS on Centos Servers] *************************************
+2021-08-09 21:49:55,303 p=21490 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 21:49:59,400 p=21490 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:50:03,469 p=21490 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:50:03,500 p=21490 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 21:50:04,602 p=21490 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:50:04,613 p=21490 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:50:04,647 p=21490 u=unix n=ansible | TASK [Install nginx] *************************************************************************************************
+2021-08-09 21:50:07,360 p=21490 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:50:07,382 p=21490 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:50:07,416 p=21490 u=unix n=ansible | TASK [create folder sites-enabled inside /etc/nginx] *****************************************************************
+2021-08-09 21:50:08,365 p=21490 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:50:08,377 p=21490 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:50:08,407 p=21490 u=unix n=ansible | TASK [create folder sites-available inside /etc/nginx] ***************************************************************
+2021-08-09 21:50:09,281 p=21490 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:50:09,306 p=21490 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:50:09,340 p=21490 u=unix n=ansible | TASK [copy nginx config file] ****************************************************************************************
+2021-08-09 21:50:11,092 p=21490 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:50:11,093 p=21490 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:50:11,121 p=21490 u=unix n=ansible | TASK [copy template nginx config file] *******************************************************************************
+2021-08-09 21:50:13,116 p=21490 u=unix n=ansible | changed: [centos01]
+2021-08-09 21:50:13,150 p=21490 u=unix n=ansible | changed: [centos02]
+2021-08-09 21:50:13,183 p=21490 u=unix n=ansible | TASK [enable configuration] ******************************************************************************************
+2021-08-09 21:50:14,090 p=21490 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:50:14,113 p=21490 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:50:14,142 p=21490 u=unix n=ansible | TASK [copy index.html] ***********************************************************************************************
+2021-08-09 21:50:16,028 p=21490 u=unix n=ansible | changed: [centos02]
+2021-08-09 21:50:16,069 p=21490 u=unix n=ansible | changed: [centos01]
+2021-08-09 21:50:16,105 p=21490 u=unix n=ansible | TASK [enabling port number 80 in firewall so that application user can connect.] *************************************
+2021-08-09 21:50:17,469 p=21490 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:50:17,470 p=21490 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:50:17,503 p=21490 u=unix n=ansible | TASK [adding http service to firewall] *******************************************************************************
+2021-08-09 21:50:18,809 p=21490 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:50:18,813 p=21490 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:50:18,815 p=21490 u=unix n=ansible | RUNNING HANDLER [restart nginx] **************************************************************************************
+2021-08-09 21:50:20,458 p=21490 u=unix n=ansible | fatal: [centos02]: FAILED! => {"changed": false, "msg": "Unable to restart service nginx: Job for nginx.service failed because the control process exited with error code.\nSee \"systemctl status nginx.service\" and \"journalctl -xe\" for details.\n"}
+2021-08-09 21:50:20,460 p=21490 u=unix n=ansible | fatal: [centos01]: FAILED! => {"changed": false, "msg": "Unable to restart service nginx: Job for nginx.service failed because the control process exited with error code.\nSee \"systemctl status nginx.service\" and \"journalctl -xe\" for details.\n"}
+2021-08-09 21:50:20,461 p=21490 u=unix n=ansible | NO MORE HOSTS LEFT ***************************************************************************************************
+2021-08-09 21:50:20,462 p=21490 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 21:50:20,463 p=21490 u=unix n=ansible | centos01                   : ok=11   changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 21:50:20,463 p=21490 u=unix n=ansible | centos02                   : ok=11   changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 21:50:20,464 p=21490 u=unix n=ansible | localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 21:50:44,390 p=21837 u=unix n=ansible | PLAY [executing these commands on remote host] ***********************************************************************
+2021-08-09 21:50:44,448 p=21837 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 21:50:47,001 p=21837 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:50:47,039 p=21837 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:50:47,318 p=21837 u=unix n=ansible | ok: [ubuntu01]
+2021-08-09 21:50:47,321 p=21837 u=unix n=ansible | ok: [ubuntu02]
+2021-08-09 21:50:47,354 p=21837 u=unix n=ansible | TASK [copy TLS key] **************************************************************************************************
+2021-08-09 21:50:48,574 p=21837 u=unix n=ansible | fatal: [ubuntu01]: FAILED! => {"changed": false, "checksum": "9f16e593f63fbb4b1c7467b7a577b6eea4536158", "msg": "Destination directory /etc/nginx/ssl does not exist"}
+2021-08-09 21:50:48,577 p=21837 u=unix n=ansible | fatal: [ubuntu02]: FAILED! => {"changed": false, "checksum": "9f16e593f63fbb4b1c7467b7a577b6eea4536158", "msg": "Destination directory /etc/nginx/ssl does not exist"}
+2021-08-09 21:50:49,376 p=21837 u=unix n=ansible | fatal: [centos01]: FAILED! => {"changed": false, "checksum": "9f16e593f63fbb4b1c7467b7a577b6eea4536158", "msg": "Destination directory /etc/nginx/ssl does not exist"}
+2021-08-09 21:50:49,432 p=21837 u=unix n=ansible | fatal: [centos02]: FAILED! => {"changed": false, "checksum": "9f16e593f63fbb4b1c7467b7a577b6eea4536158", "msg": "Destination directory /etc/nginx/ssl does not exist"}
+2021-08-09 21:50:49,434 p=21837 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 21:50:49,435 p=21837 u=unix n=ansible | centos01                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 21:50:49,435 p=21837 u=unix n=ansible | centos02                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 21:50:49,436 p=21837 u=unix n=ansible | ubuntu01                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 21:50:49,437 p=21837 u=unix n=ansible | ubuntu02                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 21:51:33,095 p=22023 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 21:51:33,138 p=22023 u=unix n=ansible | TASK [step 1 is necessary to Generate private key(key file)] *********************************************************
+2021-08-09 21:51:33,719 p=22023 u=unix n=ansible | ok: [localhost]
+2021-08-09 21:51:33,740 p=22023 u=unix n=ansible | TASK [step 2 use the private key to Generate Certificate Signing Request(CSR file)] **********************************
+2021-08-09 21:51:34,353 p=22023 u=unix n=ansible | ok: [localhost]
+2021-08-09 21:51:34,374 p=22023 u=unix n=ansible | TASK [Step 3 use the private key and CSR to Generate a Self Signed certificate.(crt file)] ***************************
+2021-08-09 21:51:35,194 p=22023 u=unix n=ansible | changed: [localhost]
+2021-08-09 21:51:35,199 p=22023 u=unix n=ansible | PLAY [This play is for configuring nginx web server with  TLS on Centos Servers] *************************************
+2021-08-09 21:51:35,229 p=22023 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 21:51:41,630 p=22023 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:51:42,373 p=22023 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:51:42,404 p=22023 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 21:51:43,491 p=22023 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:51:43,512 p=22023 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:51:43,543 p=22023 u=unix n=ansible | TASK [Install nginx] *************************************************************************************************
+2021-08-09 21:51:46,256 p=22023 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:51:46,260 p=22023 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:51:46,294 p=22023 u=unix n=ansible | TASK [create folder sites-enabled inside /etc/nginx] *****************************************************************
+2021-08-09 21:51:47,221 p=22023 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:51:47,248 p=22023 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:51:47,283 p=22023 u=unix n=ansible | TASK [create folder sites-available inside /etc/nginx] ***************************************************************
+2021-08-09 21:51:48,172 p=22023 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:51:48,175 p=22023 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:51:48,205 p=22023 u=unix n=ansible | TASK [copy nginx config file] ****************************************************************************************
+2021-08-09 21:51:49,964 p=22023 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:51:50,032 p=22023 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:51:50,064 p=22023 u=unix n=ansible | TASK [copy template nginx config file] *******************************************************************************
+2021-08-09 21:51:51,705 p=22023 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:51:51,738 p=22023 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:51:51,775 p=22023 u=unix n=ansible | TASK [enable configuration] ******************************************************************************************
+2021-08-09 21:51:52,648 p=22023 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:51:52,692 p=22023 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:51:52,725 p=22023 u=unix n=ansible | TASK [copy index.html] ***********************************************************************************************
+2021-08-09 21:51:54,647 p=22023 u=unix n=ansible | changed: [centos02]
+2021-08-09 21:51:54,650 p=22023 u=unix n=ansible | changed: [centos01]
+2021-08-09 21:51:54,683 p=22023 u=unix n=ansible | TASK [enabling port number 80 in firewall so that application user can connect.] *************************************
+2021-08-09 21:51:56,063 p=22023 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:51:56,075 p=22023 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:51:56,108 p=22023 u=unix n=ansible | TASK [adding http service to firewall] *******************************************************************************
+2021-08-09 21:51:57,292 p=22023 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:51:57,334 p=22023 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:51:57,337 p=22023 u=unix n=ansible | RUNNING HANDLER [restart nginx] **************************************************************************************
+2021-08-09 21:51:58,911 p=22023 u=unix n=ansible | fatal: [centos02]: FAILED! => {"changed": false, "msg": "Unable to start service nginx: Job for nginx.service failed because the control process exited with error code.\nSee \"systemctl status nginx.service\" and \"journalctl -xe\" for details.\n"}
+2021-08-09 21:51:58,922 p=22023 u=unix n=ansible | fatal: [centos01]: FAILED! => {"changed": false, "msg": "Unable to start service nginx: Job for nginx.service failed because the control process exited with error code.\nSee \"systemctl status nginx.service\" and \"journalctl -xe\" for details.\n"}
+2021-08-09 21:51:58,923 p=22023 u=unix n=ansible | NO MORE HOSTS LEFT ***************************************************************************************************
+2021-08-09 21:51:58,924 p=22023 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 21:51:58,925 p=22023 u=unix n=ansible | centos01                   : ok=11   changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 21:51:58,926 p=22023 u=unix n=ansible | centos02                   : ok=11   changed=1    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 21:51:58,927 p=22023 u=unix n=ansible | localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 22:01:50,487 p=22539 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02WithTsl/web-tls.yml': line 64, column 32, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+          src: files/nginx.key
+          dest: {{ key_file }} owner=root mode=0600
+                               ^ here
+We could be wrong, but this one looks like it might be an issue with
+missing quotes. Always quote template expression brackets when they
+start a value. For instance:
+
+    with_items:
+      - {{ foo }}
+
+Should be written as:
+
+    with_items:
+      - "{{ foo }}"
+
+2021-08-09 22:02:27,317 p=22565 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  found unacceptable key (unhashable type: 'AnsibleMapping')
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02WithTsl/web-tls.yml': line 64, column 18, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+          src: files/nginx.key
+          dest: {{ key_file }}
+                 ^ here
+We could be wrong, but this one looks like it might be an issue with
+missing quotes. Always quote template expression brackets when they
+start a value. For instance:
+
+    with_items:
+      - {{ foo }}
+
+Should be written as:
+
+    with_items:
+      - "{{ foo }}"
+
+2021-08-09 22:02:46,093 p=22580 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02WithTsl/web-tls.yml': line 65, column 13, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+          dest: {{ key_file }}
+            owner: root
+            ^ here
+
+2021-08-09 22:04:42,175 p=22637 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02WithTsl/web-tls.yml': line 65, column 13, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+          dest: {{ key_file }}
+            owner: root
+            ^ here
+
+2021-08-09 22:41:53,710 p=22768 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  found unacceptable key (unhashable type: 'AnsibleMapping')
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02WithTsl/web-tls.yml': line 64, column 18, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+          src: files/nginx.key
+          dest: {{ key_file }}
+                 ^ here
+We could be wrong, but this one looks like it might be an issue with
+missing quotes. Always quote template expression brackets when they
+start a value. For instance:
+
+    with_items:
+      - {{ foo }}
+
+Should be written as:
+
+    with_items:
+      - "{{ foo }}"
+
+2021-08-09 22:42:36,662 p=22820 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 22:42:36,708 p=22820 u=unix n=ansible | TASK [step 1 is necessary to Generate private key(key file)] *********************************************************
+2021-08-09 22:42:37,332 p=22820 u=unix n=ansible | ok: [localhost]
+2021-08-09 22:42:37,360 p=22820 u=unix n=ansible | TASK [step 2 use the private key to Generate Certificate Signing Request(CSR file)] **********************************
+2021-08-09 22:42:38,033 p=22820 u=unix n=ansible | ok: [localhost]
+2021-08-09 22:42:38,059 p=22820 u=unix n=ansible | TASK [Step 3 use the private key and CSR to Generate a Self Signed certificate.(crt file)] ***************************
+2021-08-09 22:42:38,950 p=22820 u=unix n=ansible | changed: [localhost]
+2021-08-09 22:42:38,957 p=22820 u=unix n=ansible | PLAY [This play is for configuring nginx web server with  TLS on Centos Servers] *************************************
+2021-08-09 22:42:38,994 p=22820 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 22:42:47,638 p=22820 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:42:47,640 p=22820 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:42:47,675 p=22820 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 22:42:48,993 p=22820 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:42:49,001 p=22820 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:42:49,042 p=22820 u=unix n=ansible | TASK [Install nginx] *************************************************************************************************
+2021-08-09 22:42:52,100 p=22820 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:42:52,123 p=22820 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:42:52,157 p=22820 u=unix n=ansible | TASK [create directories for TLS certificates] ***********************************************************************
+2021-08-09 22:42:53,237 p=22820 u=unix n=ansible | changed: [centos01]
+2021-08-09 22:42:53,256 p=22820 u=unix n=ansible | changed: [centos02]
+2021-08-09 22:42:53,291 p=22820 u=unix n=ansible | TASK [create folder sites-enabled inside /etc/nginx] *****************************************************************
+2021-08-09 22:42:54,402 p=22820 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:42:54,412 p=22820 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:42:54,446 p=22820 u=unix n=ansible | TASK [create folder sites-available inside /etc/nginx] ***************************************************************
+2021-08-09 22:42:55,565 p=22820 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:42:55,604 p=22820 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:42:55,639 p=22820 u=unix n=ansible | TASK [copy TLS key] **************************************************************************************************
+2021-08-09 22:42:58,081 p=22820 u=unix n=ansible | changed: [centos01]
+2021-08-09 22:42:58,091 p=22820 u=unix n=ansible | changed: [centos02]
+2021-08-09 22:42:58,125 p=22820 u=unix n=ansible | TASK [copy TLS certificate] ******************************************************************************************
+2021-08-09 22:43:00,302 p=22820 u=unix n=ansible | changed: [centos01]
+2021-08-09 22:43:00,349 p=22820 u=unix n=ansible | changed: [centos02]
+2021-08-09 22:43:00,383 p=22820 u=unix n=ansible | TASK [copy nginx config file] ****************************************************************************************
+2021-08-09 22:43:02,328 p=22820 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:43:02,365 p=22820 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:43:02,401 p=22820 u=unix n=ansible | TASK [copy template nginx config file] *******************************************************************************
+2021-08-09 22:43:04,392 p=22820 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:43:04,431 p=22820 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:43:04,468 p=22820 u=unix n=ansible | TASK [enable configuration] ******************************************************************************************
+2021-08-09 22:43:06,149 p=22820 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:43:06,197 p=22820 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:43:06,312 p=22820 u=unix n=ansible | TASK [copy index.html] ***********************************************************************************************
+2021-08-09 22:43:10,443 p=22820 u=unix n=ansible | changed: [centos02]
+2021-08-09 22:43:10,452 p=22820 u=unix n=ansible | changed: [centos01]
+2021-08-09 22:43:10,565 p=22820 u=unix n=ansible | TASK [enabling port number 443 in firewall so that application user can connect.] ************************************
+2021-08-09 22:43:13,503 p=22820 u=unix n=ansible | changed: [centos01]
+2021-08-09 22:43:13,528 p=22820 u=unix n=ansible | changed: [centos02]
+2021-08-09 22:43:13,646 p=22820 u=unix n=ansible | TASK [adding http service to firewall] *******************************************************************************
+2021-08-09 22:43:15,417 p=22820 u=unix n=ansible | changed: [centos01]
+2021-08-09 22:43:15,485 p=22820 u=unix n=ansible | changed: [centos02]
+2021-08-09 22:43:15,487 p=22820 u=unix n=ansible | RUNNING HANDLER [restart nginx] **************************************************************************************
+2021-08-09 22:43:17,496 p=22820 u=unix n=ansible | changed: [centos01]
+2021-08-09 22:43:17,556 p=22820 u=unix n=ansible | changed: [centos02]
+2021-08-09 22:43:17,558 p=22820 u=unix n=ansible | RUNNING HANDLER [restart the firewall] *******************************************************************************
+2021-08-09 22:43:19,475 p=22820 u=unix n=ansible | changed: [centos02]
+2021-08-09 22:43:19,488 p=22820 u=unix n=ansible | changed: [centos01]
+2021-08-09 22:43:19,490 p=22820 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 22:43:19,491 p=22820 u=unix n=ansible | centos01                   : ok=16   changed=8    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 22:43:19,491 p=22820 u=unix n=ansible | centos02                   : ok=16   changed=8    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 22:43:19,492 p=22820 u=unix n=ansible | localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 22:49:00,665 p=23601 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 22:49:00,709 p=23601 u=unix n=ansible | TASK [step 1 is necessary to Generate private key(key file)] *********************************************************
+2021-08-09 22:49:01,492 p=23601 u=unix n=ansible | ok: [localhost]
+2021-08-09 22:49:01,511 p=23601 u=unix n=ansible | TASK [step 2 use the private key to Generate Certificate Signing Request(CSR file)] **********************************
+2021-08-09 22:49:02,146 p=23601 u=unix n=ansible | ok: [localhost]
+2021-08-09 22:49:02,160 p=23601 u=unix n=ansible | TASK [Step 3 use the private key and CSR to Generate a Self Signed certificate.(crt file)] ***************************
+2021-08-09 22:49:02,974 p=23601 u=unix n=ansible | changed: [localhost]
+2021-08-09 22:49:02,978 p=23601 u=unix n=ansible | PLAY [This play is for configuring nginx web server with  TLS on Centos Servers] *************************************
+2021-08-09 22:49:03,007 p=23601 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 22:49:10,857 p=23601 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:49:10,873 p=23601 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:49:10,905 p=23601 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 22:49:12,038 p=23601 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:49:12,052 p=23601 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:49:12,085 p=23601 u=unix n=ansible | TASK [Install nginx] *************************************************************************************************
+2021-08-09 22:49:14,862 p=23601 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:49:14,874 p=23601 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:49:14,906 p=23601 u=unix n=ansible | TASK [create directories for TLS certificates] ***********************************************************************
+2021-08-09 22:49:15,833 p=23601 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:49:15,859 p=23601 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:49:15,890 p=23601 u=unix n=ansible | TASK [create folder sites-enabled inside /etc/nginx] *****************************************************************
+2021-08-09 22:49:16,764 p=23601 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:49:16,792 p=23601 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:49:16,826 p=23601 u=unix n=ansible | TASK [create folder sites-available inside /etc/nginx] ***************************************************************
+2021-08-09 22:49:17,709 p=23601 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:49:17,745 p=23601 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:49:17,775 p=23601 u=unix n=ansible | TASK [copy TLS key] **************************************************************************************************
+2021-08-09 22:49:19,503 p=23601 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:49:19,509 p=23601 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:49:19,538 p=23601 u=unix n=ansible | TASK [copy TLS certificate] ******************************************************************************************
+2021-08-09 22:49:21,419 p=23601 u=unix n=ansible | changed: [centos01]
+2021-08-09 22:49:21,435 p=23601 u=unix n=ansible | changed: [centos02]
+2021-08-09 22:49:21,467 p=23601 u=unix n=ansible | TASK [copy nginx config file] ****************************************************************************************
+2021-08-09 22:49:23,185 p=23601 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:49:23,196 p=23601 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:49:23,231 p=23601 u=unix n=ansible | TASK [copy template nginx config file] *******************************************************************************
+2021-08-09 22:49:24,805 p=23601 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:49:24,809 p=23601 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:49:24,847 p=23601 u=unix n=ansible | TASK [enable configuration] ******************************************************************************************
+2021-08-09 22:49:25,714 p=23601 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:49:25,748 p=23601 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:49:25,780 p=23601 u=unix n=ansible | TASK [copy index.html] ***********************************************************************************************
+2021-08-09 22:49:27,592 p=23601 u=unix n=ansible | changed: [centos02]
+2021-08-09 22:49:27,607 p=23601 u=unix n=ansible | changed: [centos01]
+2021-08-09 22:49:27,640 p=23601 u=unix n=ansible | TASK [enabling port number 443 in firewall so that application user can connect.] ************************************
+2021-08-09 22:49:28,964 p=23601 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:49:28,966 p=23601 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:49:28,998 p=23601 u=unix n=ansible | TASK [adding http service to firewall] *******************************************************************************
+2021-08-09 22:49:30,168 p=23601 u=unix n=ansible | ok: [centos01]
+2021-08-09 22:49:30,207 p=23601 u=unix n=ansible | ok: [centos02]
+2021-08-09 22:49:30,210 p=23601 u=unix n=ansible | RUNNING HANDLER [restart nginx] **************************************************************************************
+2021-08-09 22:49:31,827 p=23601 u=unix n=ansible | changed: [centos01]
+2021-08-09 22:49:31,848 p=23601 u=unix n=ansible | changed: [centos02]
+2021-08-09 22:49:31,851 p=23601 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 22:49:31,851 p=23601 u=unix n=ansible | centos01                   : ok=15   changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 22:49:31,852 p=23601 u=unix n=ansible | centos02                   : ok=15   changed=3    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 22:49:31,853 p=23601 u=unix n=ansible | localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 23:45:44,758 p=25412 u=unix n=ansible | PLAY [this play is for generating cerfiticate on localserver for to be used by web server.] **************************
+2021-08-09 23:45:44,797 p=25412 u=unix n=ansible | TASK [step 1 is necessary to Generate private key(key file)] *********************************************************
+2021-08-09 23:45:45,416 p=25412 u=unix n=ansible | ok: [localhost]
+2021-08-09 23:45:45,429 p=25412 u=unix n=ansible | TASK [step 2 use the private key to Generate Certificate Signing Request(CSR file)] **********************************
+2021-08-09 23:45:46,098 p=25412 u=unix n=ansible | ok: [localhost]
+2021-08-09 23:45:46,112 p=25412 u=unix n=ansible | TASK [Step 3 use the private key and CSR to Generate a Self Signed certificate.(crt file)] ***************************
+2021-08-09 23:45:46,986 p=25412 u=unix n=ansible | changed: [localhost]
+2021-08-09 23:45:46,991 p=25412 u=unix n=ansible | PLAY [This play is for configuring nginx web server with  TLS on Centos Servers] *************************************
+2021-08-09 23:45:47,016 p=25412 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 23:45:50,654 p=25412 u=unix n=ansible | ok: [centos02]
+2021-08-09 23:45:55,559 p=25412 u=unix n=ansible | ok: [centos01]
+2021-08-09 23:45:55,585 p=25412 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 23:45:56,822 p=25412 u=unix n=ansible | ok: [centos01]
+2021-08-09 23:45:56,831 p=25412 u=unix n=ansible | ok: [centos02]
+2021-08-09 23:45:56,855 p=25412 u=unix n=ansible | TASK [Install nginx] *************************************************************************************************
+2021-08-09 23:45:59,837 p=25412 u=unix n=ansible | ok: [centos02]
+2021-08-09 23:45:59,867 p=25412 u=unix n=ansible | ok: [centos01]
+2021-08-09 23:45:59,900 p=25412 u=unix n=ansible | TASK [create directories for TLS certificates] ***********************************************************************
+2021-08-09 23:46:01,007 p=25412 u=unix n=ansible | ok: [centos01]
+2021-08-09 23:46:01,015 p=25412 u=unix n=ansible | ok: [centos02]
+2021-08-09 23:46:01,038 p=25412 u=unix n=ansible | TASK [create folder sites-enabled inside /etc/nginx] *****************************************************************
+2021-08-09 23:46:02,107 p=25412 u=unix n=ansible | ok: [centos01]
+2021-08-09 23:46:02,121 p=25412 u=unix n=ansible | ok: [centos02]
+2021-08-09 23:46:02,146 p=25412 u=unix n=ansible | TASK [create folder sites-available inside /etc/nginx] ***************************************************************
+2021-08-09 23:46:03,206 p=25412 u=unix n=ansible | ok: [centos01]
+2021-08-09 23:46:03,213 p=25412 u=unix n=ansible | ok: [centos02]
+2021-08-09 23:46:03,239 p=25412 u=unix n=ansible | TASK [copy TLS key] **************************************************************************************************
+2021-08-09 23:46:05,150 p=25412 u=unix n=ansible | ok: [centos02]
+2021-08-09 23:46:05,208 p=25412 u=unix n=ansible | ok: [centos01]
+2021-08-09 23:46:05,236 p=25412 u=unix n=ansible | TASK [copy TLS certificate] ******************************************************************************************
+2021-08-09 23:46:07,465 p=25412 u=unix n=ansible | changed: [centos01]
+2021-08-09 23:46:07,466 p=25412 u=unix n=ansible | changed: [centos02]
+2021-08-09 23:46:07,500 p=25412 u=unix n=ansible | TASK [copy nginx config file] ****************************************************************************************
+2021-08-09 23:46:09,326 p=25412 u=unix n=ansible | ok: [centos01]
+2021-08-09 23:46:09,385 p=25412 u=unix n=ansible | ok: [centos02]
+2021-08-09 23:46:09,413 p=25412 u=unix n=ansible | TASK [copy template nginx config file] *******************************************************************************
+2021-08-09 23:46:11,507 p=25412 u=unix n=ansible | changed: [centos01]
+2021-08-09 23:46:11,536 p=25412 u=unix n=ansible | changed: [centos02]
+2021-08-09 23:46:11,564 p=25412 u=unix n=ansible | TASK [enable configuration] ******************************************************************************************
+2021-08-09 23:46:12,545 p=25412 u=unix n=ansible | ok: [centos02]
+2021-08-09 23:46:12,582 p=25412 u=unix n=ansible | ok: [centos01]
+2021-08-09 23:46:12,611 p=25412 u=unix n=ansible | TASK [copy index.html] ***********************************************************************************************
+2021-08-09 23:46:14,636 p=25412 u=unix n=ansible | changed: [centos01]
+2021-08-09 23:46:14,660 p=25412 u=unix n=ansible | changed: [centos02]
+2021-08-09 23:46:14,694 p=25412 u=unix n=ansible | TASK [enabling port number 443 in firewall so that application user can connect.] ************************************
+2021-08-09 23:46:16,174 p=25412 u=unix n=ansible | ok: [centos02]
+2021-08-09 23:46:16,190 p=25412 u=unix n=ansible | ok: [centos01]
+2021-08-09 23:46:16,219 p=25412 u=unix n=ansible | TASK [adding http service to firewall] *******************************************************************************
+2021-08-09 23:46:17,593 p=25412 u=unix n=ansible | ok: [centos01]
+2021-08-09 23:46:17,617 p=25412 u=unix n=ansible | ok: [centos02]
+2021-08-09 23:46:17,620 p=25412 u=unix n=ansible | RUNNING HANDLER [restart nginx] **************************************************************************************
+2021-08-09 23:46:19,431 p=25412 u=unix n=ansible | changed: [centos01]
+2021-08-09 23:46:19,442 p=25412 u=unix n=ansible | changed: [centos02]
+2021-08-09 23:46:19,445 p=25412 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 23:46:19,446 p=25412 u=unix n=ansible | centos01                   : ok=15   changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 23:46:19,446 p=25412 u=unix n=ansible | centos02                   : ok=15   changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 23:46:19,447 p=25412 u=unix n=ansible | localhost                  : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

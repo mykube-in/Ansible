@@ -1,0 +1,16 @@
+---
+- name: this playbook it to start nginx, We will see how it begave when nginx is running and not running and we kick this job
+  hosts: localhost
+  become: true
+  become_user: root
+  tasks:
+  - name: task is to start httpd using  module.
+    command: httpd -k start
+    register: command_output_variable
+    changed_when: '"already running" not in command_output_variable.stdout|default(" ")'
+
+
+  - name: debug task purpose is just to echo variable value
+    debug: 
+      msg: "{{command_output_variable}}"
+

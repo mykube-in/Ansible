@@ -1,0 +1,1492 @@
+2021-08-09 15:09:18,751 p=11672 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 15:09:18,793 p=11672 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 15:09:25,392 p=11672 u=unix n=ansible | ok: [centos02]
+2021-08-09 15:09:30,216 p=11672 u=unix n=ansible | ok: [centos01]
+2021-08-09 15:09:30,241 p=11672 u=unix n=ansible | TASK [Ensure resolv.conf is mutable i.e chan be changed.] ************************************************************
+2021-08-09 15:09:31,313 p=11672 u=unix n=ansible | changed: [centos01]
+2021-08-09 15:09:31,314 p=11672 u=unix n=ansible | changed: [centos02]
+2021-08-09 15:09:31,337 p=11672 u=unix n=ansible | TASK [copy file with owner and permissions] **************************************************************************
+2021-08-09 15:09:33,306 p=11672 u=unix n=ansible | changed: [centos02]
+2021-08-09 15:09:33,309 p=11672 u=unix n=ansible | changed: [centos01]
+2021-08-09 15:09:33,334 p=11672 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 15:09:34,263 p=11672 u=unix n=ansible | changed: [centos01]
+2021-08-09 15:09:34,301 p=11672 u=unix n=ansible | changed: [centos02]
+2021-08-09 15:09:34,327 p=11672 u=unix n=ansible | TASK [Install nginx] *************************************************************************************************
+2021-08-09 15:11:28,397 p=11672 u=unix n=ansible | fatal: [centos01]: FAILED! => {"changed": false, "msg": "Failed to download packages: Curl error (6): Couldn't resolve host name for http://mirrorlist.centos.org/?release=8&arch=x86_64&repo=AppStream&infra=stock [Could not resolve host: mirrorlist.centos.org]", "results": []}
+2021-08-09 15:11:28,471 p=11672 u=unix n=ansible | fatal: [centos02]: FAILED! => {"changed": false, "msg": "Failed to download packages: Curl error (6): Couldn't resolve host name for http://mirrorlist.centos.org/?release=8&arch=x86_64&repo=AppStream&infra=stock [Could not resolve host: mirrorlist.centos.org]", "results": []}
+2021-08-09 15:11:28,473 p=11672 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 15:11:28,474 p=11672 u=unix n=ansible | centos01                   : ok=4    changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 15:11:28,474 p=11672 u=unix n=ansible | centos02                   : ok=4    changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 15:17:22,740 p=12223 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 15:17:22,777 p=12223 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 15:17:30,598 p=12223 u=unix n=ansible | ok: [centos02]
+2021-08-09 15:17:31,580 p=12223 u=unix n=ansible | ok: [centos01]
+2021-08-09 15:17:31,606 p=12223 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 15:17:32,684 p=12223 u=unix n=ansible | changed: [centos01]
+2021-08-09 15:17:32,694 p=12223 u=unix n=ansible | changed: [centos02]
+2021-08-09 15:17:32,720 p=12223 u=unix n=ansible | TASK [Install nginx] *************************************************************************************************
+2021-08-09 15:17:41,411 p=12223 u=unix n=ansible | changed: [centos01]
+2021-08-09 15:17:41,662 p=12223 u=unix n=ansible | changed: [centos02]
+2021-08-09 15:17:41,738 p=12223 u=unix n=ansible | TASK [create folder sites-enabled inside /etc/nginx] *****************************************************************
+2021-08-09 15:17:42,700 p=12223 u=unix n=ansible | changed: [centos01]
+2021-08-09 15:17:42,798 p=12223 u=unix n=ansible | changed: [centos02]
+2021-08-09 15:17:42,825 p=12223 u=unix n=ansible | TASK [create folder sites-available inside /etc/nginx] ***************************************************************
+2021-08-09 15:17:43,688 p=12223 u=unix n=ansible | changed: [centos01]
+2021-08-09 15:17:43,884 p=12223 u=unix n=ansible | changed: [centos02]
+2021-08-09 15:17:43,908 p=12223 u=unix n=ansible | TASK [copy nginx config file] ****************************************************************************************
+2021-08-09 15:17:46,021 p=12223 u=unix n=ansible | changed: [centos02]
+2021-08-09 15:17:46,026 p=12223 u=unix n=ansible | changed: [centos01]
+2021-08-09 15:17:46,048 p=12223 u=unix n=ansible | TASK [copy template nginx config file] *******************************************************************************
+2021-08-09 15:17:47,860 p=12223 u=unix n=ansible | changed: [centos01]
+2021-08-09 15:17:47,884 p=12223 u=unix n=ansible | changed: [centos02]
+2021-08-09 15:17:47,912 p=12223 u=unix n=ansible | TASK [enable configuration] ******************************************************************************************
+2021-08-09 15:17:48,763 p=12223 u=unix n=ansible | changed: [centos01]
+2021-08-09 15:17:48,789 p=12223 u=unix n=ansible | changed: [centos02]
+2021-08-09 15:17:48,818 p=12223 u=unix n=ansible | TASK [copy index.html] ***********************************************************************************************
+2021-08-09 15:17:50,572 p=12223 u=unix n=ansible | changed: [centos02]
+2021-08-09 15:17:50,578 p=12223 u=unix n=ansible | changed: [centos01]
+2021-08-09 15:17:50,580 p=12223 u=unix n=ansible | RUNNING HANDLER [restart nginx] **************************************************************************************
+2021-08-09 15:17:52,273 p=12223 u=unix n=ansible | changed: [centos01]
+2021-08-09 15:17:52,291 p=12223 u=unix n=ansible | changed: [centos02]
+2021-08-09 15:17:52,294 p=12223 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 15:17:52,295 p=12223 u=unix n=ansible | centos01                   : ok=10   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 15:17:52,296 p=12223 u=unix n=ansible | centos02                   : ok=10   changed=9    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:27:06,154 p=12678 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 16:27:06,192 p=12678 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 16:27:19,106 p=12678 u=unix n=ansible | ok: [centos01]
+2021-08-09 16:27:19,116 p=12678 u=unix n=ansible | ok: [centos02]
+2021-08-09 16:27:19,142 p=12678 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 16:27:20,300 p=12678 u=unix n=ansible | fatal: [centos02]: FAILED! => {"msg": "The conditional check ''i' not in resolv_file.diff.before.attributes' failed. The error was: error while evaluating conditional ('i' not in resolv_file.diff.before.attributes): 'dict object' has no attribute 'attributes'"}
+2021-08-09 16:27:20,301 p=12678 u=unix n=ansible | fatal: [centos01]: FAILED! => {"msg": "The conditional check ''i' not in resolv_file.diff.before.attributes' failed. The error was: error while evaluating conditional ('i' not in resolv_file.diff.before.attributes): 'dict object' has no attribute 'attributes'"}
+2021-08-09 16:27:20,303 p=12678 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 16:27:20,304 p=12678 u=unix n=ansible | centos01                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:27:20,304 p=12678 u=unix n=ansible | centos02                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:29:23,905 p=12793 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 16:29:23,945 p=12793 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 16:29:31,550 p=12793 u=unix n=ansible | ok: [centos01]
+2021-08-09 16:29:36,207 p=12793 u=unix n=ansible | ok: [centos02]
+2021-08-09 16:29:36,237 p=12793 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 16:29:37,293 p=12793 u=unix n=ansible | fatal: [centos01]: FAILED! => {"msg": "The conditional check ''i' not in resolv_file.diff.before.attributes' failed. The error was: error while evaluating conditional ('i' not in resolv_file.diff.before.attributes): 'dict object' has no attribute 'attributes'"}
+2021-08-09 16:29:37,310 p=12793 u=unix n=ansible | fatal: [centos02]: FAILED! => {"msg": "The conditional check ''i' not in resolv_file.diff.before.attributes' failed. The error was: error while evaluating conditional ('i' not in resolv_file.diff.before.attributes): 'dict object' has no attribute 'attributes'"}
+2021-08-09 16:29:37,312 p=12793 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 16:29:37,313 p=12793 u=unix n=ansible | centos01                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:29:37,313 p=12793 u=unix n=ansible | centos02                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:30:31,580 p=12868 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 16:30:31,618 p=12868 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 16:30:33,768 p=12868 u=unix n=ansible | ok: [centos01]
+2021-08-09 16:30:34,390 p=12868 u=unix n=ansible | ok: [centos02]
+2021-08-09 16:30:34,418 p=12868 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 16:30:35,442 p=12868 u=unix n=ansible | ok: [centos01]
+2021-08-09 16:30:35,450 p=12868 u=unix n=ansible | ok: [centos02]
+2021-08-09 16:30:35,478 p=12868 u=unix n=ansible | TASK [printing resolv_file variable] *********************************************************************************
+2021-08-09 16:30:35,572 p=12868 u=unix n=ansible | ok: [centos01] => {
+    "resolv_file": {
+        "changed": false,
+        "diff": {
+            "after": {
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 16:30:35,595 p=12868 u=unix n=ansible | ok: [centos02] => {
+    "resolv_file": {
+        "changed": false,
+        "diff": {
+            "after": {
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 16:30:35,599 p=12868 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 16:30:35,600 p=12868 u=unix n=ansible | centos01                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:30:35,601 p=12868 u=unix n=ansible | centos02                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:32:04,401 p=12971 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 16:32:04,442 p=12971 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 16:32:12,487 p=12971 u=unix n=ansible | ok: [centos01]
+2021-08-09 16:32:12,879 p=12971 u=unix n=ansible | ok: [centos02]
+2021-08-09 16:32:12,905 p=12971 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 16:32:14,027 p=12971 u=unix n=ansible | ok: [centos01]
+2021-08-09 16:32:14,029 p=12971 u=unix n=ansible | ok: [centos02]
+2021-08-09 16:32:14,054 p=12971 u=unix n=ansible | TASK [printing resolv_file variable] *********************************************************************************
+2021-08-09 16:32:14,133 p=12971 u=unix n=ansible | ok: [centos01] => {
+    "resolv_file.diff": {
+        "after": {
+            "path": "/etc/resolv.conf"
+        },
+        "before": {
+            "path": "/etc/resolv.conf"
+        }
+    }
+}
+2021-08-09 16:32:14,153 p=12971 u=unix n=ansible | ok: [centos02] => {
+    "resolv_file.diff": {
+        "after": {
+            "path": "/etc/resolv.conf"
+        },
+        "before": {
+            "path": "/etc/resolv.conf"
+        }
+    }
+}
+2021-08-09 16:32:14,227 p=12971 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 16:32:14,228 p=12971 u=unix n=ansible | centos01                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:32:14,229 p=12971 u=unix n=ansible | centos02                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:34:05,518 p=13045 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 16:34:05,553 p=13045 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 16:34:09,037 p=13045 u=unix n=ansible | ok: [centos02]
+2021-08-09 16:34:13,383 p=13045 u=unix n=ansible | ok: [centos01]
+2021-08-09 16:34:13,409 p=13045 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 16:34:14,440 p=13045 u=unix n=ansible | ok: [centos01]
+2021-08-09 16:34:14,453 p=13045 u=unix n=ansible | ok: [centos02]
+2021-08-09 16:34:14,474 p=13045 u=unix n=ansible | TASK [printing resolv_file variable] *********************************************************************************
+2021-08-09 16:34:14,551 p=13045 u=unix n=ansible | ok: [centos01] => {
+    "resolv_file.diff": {
+        "after": {
+            "path": "/etc/resolv.conf"
+        },
+        "before": {
+            "path": "/etc/resolv.conf"
+        }
+    }
+}
+2021-08-09 16:34:14,576 p=13045 u=unix n=ansible | ok: [centos02] => {
+    "resolv_file.diff": {
+        "after": {
+            "path": "/etc/resolv.conf"
+        },
+        "before": {
+            "path": "/etc/resolv.conf"
+        }
+    }
+}
+2021-08-09 16:34:14,580 p=13045 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 16:34:14,581 p=13045 u=unix n=ansible | centos01                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:34:14,582 p=13045 u=unix n=ansible | centos02                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:34:49,810 p=13123 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02NoTsl/web-notls.yml': line 21, column 22, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+    debug:
+      var: [centos02].resolv_file.diff
+                     ^ here
+
+2021-08-09 16:35:04,884 p=13139 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02NoTsl/web-notls.yml': line 21, column 15, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+    debug:
+      var: [0].resolv_file.diff
+              ^ here
+
+2021-08-09 16:36:47,766 p=13357 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 16:36:47,800 p=13357 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 16:36:51,170 p=13357 u=unix n=ansible | ok: [centos02]
+2021-08-09 16:36:54,670 p=13357 u=unix n=ansible | ok: [centos01]
+2021-08-09 16:36:54,698 p=13357 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 16:36:55,756 p=13357 u=unix n=ansible | changed: [centos01]
+2021-08-09 16:36:55,765 p=13357 u=unix n=ansible | ok: [centos02]
+2021-08-09 16:36:55,791 p=13357 u=unix n=ansible | TASK [printing resolv_file variable] *********************************************************************************
+2021-08-09 16:36:55,879 p=13357 u=unix n=ansible | ok: [centos01] => {
+    "resolv_file.diff": {
+        "after": {
+            "attributes": "+i",
+            "path": "/etc/resolv.conf"
+        },
+        "before": {
+            "attributes": "",
+            "path": "/etc/resolv.conf"
+        }
+    }
+}
+2021-08-09 16:36:55,908 p=13357 u=unix n=ansible | ok: [centos02] => {
+    "resolv_file.diff": {
+        "after": {
+            "path": "/etc/resolv.conf"
+        },
+        "before": {
+            "path": "/etc/resolv.conf"
+        }
+    }
+}
+2021-08-09 16:36:55,913 p=13357 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 16:36:55,914 p=13357 u=unix n=ansible | centos01                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:36:55,915 p=13357 u=unix n=ansible | centos02                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:37:16,651 p=13415 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 16:37:16,691 p=13415 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 16:37:23,102 p=13415 u=unix n=ansible | ok: [centos01]
+2021-08-09 16:37:23,118 p=13415 u=unix n=ansible | ok: [centos02]
+2021-08-09 16:37:23,141 p=13415 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 16:37:24,183 p=13415 u=unix n=ansible | ok: [centos01]
+2021-08-09 16:37:24,186 p=13415 u=unix n=ansible | ok: [centos02]
+2021-08-09 16:37:24,211 p=13415 u=unix n=ansible | TASK [printing resolv_file variable] *********************************************************************************
+2021-08-09 16:37:24,293 p=13415 u=unix n=ansible | ok: [centos01] => {
+    "resolv_file.diff": {
+        "after": {
+            "path": "/etc/resolv.conf"
+        },
+        "before": {
+            "path": "/etc/resolv.conf"
+        }
+    }
+}
+2021-08-09 16:37:24,324 p=13415 u=unix n=ansible | ok: [centos02] => {
+    "resolv_file.diff": {
+        "after": {
+            "path": "/etc/resolv.conf"
+        },
+        "before": {
+            "path": "/etc/resolv.conf"
+        }
+    }
+}
+2021-08-09 16:37:24,328 p=13415 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 16:37:24,328 p=13415 u=unix n=ansible | centos01                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:37:24,329 p=13415 u=unix n=ansible | centos02                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:57:23,651 p=13518 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 16:57:23,693 p=13518 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 16:57:35,386 p=13518 u=unix n=ansible | ok: [centos01]
+2021-08-09 16:57:36,914 p=13518 u=unix n=ansible | ok: [centos02]
+2021-08-09 16:57:36,946 p=13518 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 16:57:38,068 p=13518 u=unix n=ansible | fatal: [centos01]: FAILED! => {"msg": "The conditional check ''i' not in resolv_file.diff.before.attributes' failed. The error was: error while evaluating conditional ('i' not in resolv_file.diff.before.attributes): 'dict object' has no attribute 'attributes'"}
+2021-08-09 16:57:38,098 p=13518 u=unix n=ansible | fatal: [centos02]: FAILED! => {"msg": "The conditional check ''i' not in resolv_file.diff.before.attributes' failed. The error was: error while evaluating conditional ('i' not in resolv_file.diff.before.attributes): 'dict object' has no attribute 'attributes'"}
+2021-08-09 16:57:38,100 p=13518 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 16:57:38,100 p=13518 u=unix n=ansible | centos01                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:57:38,101 p=13518 u=unix n=ansible | centos02                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:58:42,166 p=13579 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 16:58:42,208 p=13579 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 16:58:44,717 p=13579 u=unix n=ansible | ok: [centos01]
+2021-08-09 16:58:55,100 p=13579 u=unix n=ansible | ok: [centos02]
+2021-08-09 16:58:55,134 p=13579 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 16:58:56,286 p=13579 u=unix n=ansible | fatal: [centos01]: FAILED! => {"msg": "The conditional check ''i' not in resolv_file.diff.before.attributes' failed. The error was: error while evaluating conditional ('i' not in resolv_file.diff.before.attributes): 'dict object' has no attribute 'attributes'"}
+2021-08-09 16:58:56,295 p=13579 u=unix n=ansible | fatal: [centos02]: FAILED! => {"msg": "The conditional check ''i' not in resolv_file.diff.before.attributes' failed. The error was: error while evaluating conditional ('i' not in resolv_file.diff.before.attributes): 'dict object' has no attribute 'attributes'"}
+2021-08-09 16:58:56,297 p=13579 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 16:58:56,298 p=13579 u=unix n=ansible | centos01                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:58:56,298 p=13579 u=unix n=ansible | centos02                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:59:23,206 p=13630 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 16:59:23,247 p=13630 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 16:59:34,342 p=13630 u=unix n=ansible | ok: [centos01]
+2021-08-09 16:59:34,819 p=13630 u=unix n=ansible | ok: [centos02]
+2021-08-09 16:59:34,852 p=13630 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 16:59:36,103 p=13630 u=unix n=ansible | changed: [centos01]
+2021-08-09 16:59:36,131 p=13630 u=unix n=ansible | fatal: [centos02]: FAILED! => {"msg": "The conditional check ''i' not in resolv_file.diff.before.attributes' failed. The error was: error while evaluating conditional ('i' not in resolv_file.diff.before.attributes): 'dict object' has no attribute 'attributes'"}
+2021-08-09 16:59:36,136 p=13630 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 16:59:36,137 p=13630 u=unix n=ansible | centos01                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:59:36,137 p=13630 u=unix n=ansible | centos02                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 16:59:57,555 p=13675 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 16:59:57,596 p=13675 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:00:04,463 p=13675 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:00:04,490 p=13675 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:00:04,528 p=13675 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:00:05,699 p=13675 u=unix n=ansible | fatal: [centos01]: FAILED! => {"msg": "The conditional check ''i' not in resolv_file.diff.before.attributes' failed. The error was: error while evaluating conditional ('i' not in resolv_file.diff.before.attributes): 'dict object' has no attribute 'attributes'"}
+2021-08-09 17:00:05,714 p=13675 u=unix n=ansible | fatal: [centos02]: FAILED! => {"msg": "The conditional check ''i' not in resolv_file.diff.before.attributes' failed. The error was: error while evaluating conditional ('i' not in resolv_file.diff.before.attributes): 'dict object' has no attribute 'attributes'"}
+2021-08-09 17:00:05,716 p=13675 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:00:05,716 p=13675 u=unix n=ansible | centos01                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:00:05,717 p=13675 u=unix n=ansible | centos02                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:00:28,238 p=13722 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:00:28,280 p=13722 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:00:39,368 p=13722 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:00:43,966 p=13722 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:00:43,995 p=13722 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:00:45,113 p=13722 u=unix n=ansible | fatal: [centos02]: FAILED! => {"msg": "The conditional check ''i' not in resolv_file.diff.before.attributes' failed. The error was: error while evaluating conditional ('i' not in resolv_file.diff.before.attributes): 'dict object' has no attribute 'attributes'"}
+2021-08-09 17:00:45,125 p=13722 u=unix n=ansible | changed: [centos01]
+2021-08-09 17:00:45,131 p=13722 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:00:45,132 p=13722 u=unix n=ansible | centos01                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:00:45,133 p=13722 u=unix n=ansible | centos02                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:02:39,178 p=13797 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:02:39,220 p=13797 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:02:48,117 p=13797 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:02:52,710 p=13797 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:02:52,746 p=13797 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:02:53,838 p=13797 u=unix n=ansible | changed: [centos02]
+2021-08-09 17:02:53,839 p=13797 u=unix n=ansible | changed: [centos01]
+2021-08-09 17:02:53,865 p=13797 u=unix n=ansible | TASK [display var] ***************************************************************************************************
+2021-08-09 17:02:53,950 p=13797 u=unix n=ansible | ok: [centos01] => {
+    "resolv_file": {
+        "changed": true,
+        "diff": {
+            "after": {
+                "attributes": "+i",
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "attributes": "",
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:02:53,979 p=13797 u=unix n=ansible | ok: [centos02] => {
+    "resolv_file": {
+        "changed": true,
+        "diff": {
+            "after": {
+                "attributes": "+i",
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "attributes": "",
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:02:53,983 p=13797 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:02:53,984 p=13797 u=unix n=ansible | centos01                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:02:53,984 p=13797 u=unix n=ansible | centos02                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:03:39,927 p=13852 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:03:39,967 p=13852 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:03:46,358 p=13852 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:03:50,939 p=13852 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:03:50,968 p=13852 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:03:52,049 p=13852 u=unix n=ansible | fatal: [centos01]: FAILED! => {"msg": "The conditional check ''i' not in resolv_file.diff.before.attributes' failed. The error was: error while evaluating conditional ('i' not in resolv_file.diff.before.attributes): 'dict object' has no attribute 'attributes'"}
+2021-08-09 17:03:52,061 p=13852 u=unix n=ansible | fatal: [centos02]: FAILED! => {"msg": "The conditional check ''i' not in resolv_file.diff.before.attributes' failed. The error was: error while evaluating conditional ('i' not in resolv_file.diff.before.attributes): 'dict object' has no attribute 'attributes'"}
+2021-08-09 17:03:52,063 p=13852 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:03:52,064 p=13852 u=unix n=ansible | centos01                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:03:52,064 p=13852 u=unix n=ansible | centos02                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:06:04,714 p=13918 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02NoTsl/web-notls.yml': line 17, column 67, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+    register: resolv_file
+    changed_when: "'i' not in resolv_file.diff.before.attributes" or "resolv_file.diff.before.attributes" is not defined
+                                                                  ^ here
+This one looks easy to fix. It seems that there is a value started
+with a quote, and the YAML parser is expecting to see the line ended
+with the same kind of quote. For instance:
+
+    when: "ok" in result.stdout
+
+Could be written as:
+
+   when: '"ok" in result.stdout'
+
+Or equivalently:
+
+   when: "'ok' in result.stdout"
+We could be wrong, but this one looks like it might be an issue with
+unbalanced quotes. If starting a value with a quote, make sure the
+line ends with the same set of quotes. For instance this arbitrary
+example:
+
+    foo: "bad" "wolf"
+
+Could be written as:
+
+    foo: '"bad" "wolf"'
+
+2021-08-09 17:06:34,891 p=13933 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02NoTsl/web-notls.yml': line 17, column 67, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+    register: resolv_file
+    changed_when: "'i' not in resolv_file.diff.before.attributes" or "resolv_file.diff.before.attributes is not defined"
+                                                                  ^ here
+We could be wrong, but this one looks like it might be an issue with
+unbalanced quotes. If starting a value with a quote, make sure the
+line ends with the same set of quotes. For instance this arbitrary
+example:
+
+    foo: "bad" "wolf"
+
+Could be written as:
+
+    foo: '"bad" "wolf"'
+
+2021-08-09 17:07:10,730 p=13959 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:07:10,772 p=13959 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:07:18,699 p=13959 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:07:23,265 p=13959 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:07:23,294 p=13959 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:07:24,370 p=13959 u=unix n=ansible | fatal: [centos01]: FAILED! => {"msg": "The conditional check ''i' not in resolv_file.diff.before.attributes or resolv_file.diff.before.attributes is not defined' failed. The error was: error while evaluating conditional ('i' not in resolv_file.diff.before.attributes or resolv_file.diff.before.attributes is not defined): 'dict object' has no attribute 'attributes'"}
+2021-08-09 17:07:24,386 p=13959 u=unix n=ansible | fatal: [centos02]: FAILED! => {"msg": "The conditional check ''i' not in resolv_file.diff.before.attributes or resolv_file.diff.before.attributes is not defined' failed. The error was: error while evaluating conditional ('i' not in resolv_file.diff.before.attributes or resolv_file.diff.before.attributes is not defined): 'dict object' has no attribute 'attributes'"}
+2021-08-09 17:07:24,388 p=13959 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:07:24,389 p=13959 u=unix n=ansible | centos01                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:07:24,390 p=13959 u=unix n=ansible | centos02                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:07:56,369 p=14031 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:07:56,413 p=14031 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:07:57,776 p=14031 u=unix n=ansible |  [ERROR]: User interrupted execution
+
+2021-08-09 17:08:17,919 p=14061 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:08:17,959 p=14061 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:08:19,835 p=14061 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:08:24,509 p=14061 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:08:24,543 p=14061 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:08:25,627 p=14061 u=unix n=ansible | fatal: [centos02]: FAILED! => {"msg": "The conditional check ''i' not in resolv_file.diff.before.attributes or resolv_file.diff.before is not defined' failed. The error was: error while evaluating conditional ('i' not in resolv_file.diff.before.attributes or resolv_file.diff.before is not defined): 'dict object' has no attribute 'attributes'"}
+2021-08-09 17:08:25,644 p=14061 u=unix n=ansible | fatal: [centos01]: FAILED! => {"msg": "The conditional check ''i' not in resolv_file.diff.before.attributes or resolv_file.diff.before is not defined' failed. The error was: error while evaluating conditional ('i' not in resolv_file.diff.before.attributes or resolv_file.diff.before is not defined): 'dict object' has no attribute 'attributes'"}
+2021-08-09 17:08:25,646 p=14061 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:08:25,646 p=14061 u=unix n=ansible | centos01                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:08:25,647 p=14061 u=unix n=ansible | centos02                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:08:44,084 p=14114 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:08:44,126 p=14114 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:08:45,928 p=14114 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:08:55,171 p=14114 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:08:55,202 p=14114 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:08:56,291 p=14114 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:08:56,299 p=14114 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:08:56,328 p=14114 u=unix n=ansible | TASK [display var] ***************************************************************************************************
+2021-08-09 17:08:56,416 p=14114 u=unix n=ansible | ok: [centos01] => {
+    "resolv_file": {
+        "changed": false,
+        "diff": {
+            "after": {
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:08:56,440 p=14114 u=unix n=ansible | ok: [centos02] => {
+    "resolv_file": {
+        "changed": false,
+        "diff": {
+            "after": {
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:08:56,443 p=14114 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:08:56,444 p=14114 u=unix n=ansible | centos01                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:08:56,444 p=14114 u=unix n=ansible | centos02                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:10:40,522 p=14184 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02NoTsl/web-notls.yml': line 17, column 23, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+    register: resolv_file
+    changed_when: 'i' not in resolv_file.diff.before.attributes  or resolv_file.diff.before.attributes is not defined
+                      ^ here
+This one looks easy to fix. It seems that there is a value started
+with a quote, and the YAML parser is expecting to see the line ended
+with the same kind of quote. For instance:
+
+    when: "ok" in result.stdout
+
+Could be written as:
+
+   when: '"ok" in result.stdout'
+
+Or equivalently:
+
+   when: "'ok' in result.stdout"
+
+2021-08-09 17:11:12,348 p=14210 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02NoTsl/web-notls.yml': line 17, column 23, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+    register: resolv_file
+    changed_when: "i" not in resolv_file.diff.before.attributes  or resolv_file.diff.before.attributes is not defined
+                      ^ here
+This one looks easy to fix. It seems that there is a value started
+with a quote, and the YAML parser is expecting to see the line ended
+with the same kind of quote. For instance:
+
+    when: "ok" in result.stdout
+
+Could be written as:
+
+   when: '"ok" in result.stdout'
+
+Or equivalently:
+
+   when: "'ok' in result.stdout"
+
+2021-08-09 17:11:31,936 p=14225 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02NoTsl/web-notls.yml': line 17, column 68, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+    register: resolv_file
+    changed_when: '"i" not in resolv_file.diff.before.attributes'  or resolv_file.diff.before.attributes is not defined
+                                                                   ^ here
+This one looks easy to fix. It seems that there is a value started
+with a quote, and the YAML parser is expecting to see the line ended
+with the same kind of quote. For instance:
+
+    when: "ok" in result.stdout
+
+Could be written as:
+
+   when: '"ok" in result.stdout'
+
+Or equivalently:
+
+   when: "'ok' in result.stdout"
+
+2021-08-09 17:11:57,254 p=14240 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:11:57,299 p=14240 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:12:05,414 p=14240 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:12:09,993 p=14240 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:12:10,023 p=14240 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:12:11,094 p=14240 u=unix n=ansible | changed: [centos01]
+2021-08-09 17:12:11,114 p=14240 u=unix n=ansible | changed: [centos02]
+2021-08-09 17:12:11,140 p=14240 u=unix n=ansible | TASK [display var] ***************************************************************************************************
+2021-08-09 17:12:11,226 p=14240 u=unix n=ansible | ok: [centos01] => {
+    "resolv_file": {
+        "changed": true,
+        "diff": {
+            "after": {
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:12:11,259 p=14240 u=unix n=ansible | ok: [centos02] => {
+    "resolv_file": {
+        "changed": true,
+        "diff": {
+            "after": {
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:12:11,264 p=14240 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:12:11,265 p=14240 u=unix n=ansible | centos01                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:12:11,265 p=14240 u=unix n=ansible | centos02                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:12:43,751 p=14314 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:12:43,787 p=14314 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:12:50,584 p=14314 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:12:54,966 p=14314 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:12:54,994 p=14314 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:12:56,079 p=14338 u=unix n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{
+resolv_file.diff.before.attributes }} is not defined
+
+2021-08-09 17:12:56,085 p=14314 u=unix n=ansible | fatal: [centos02]: FAILED! => {"msg": "The conditional check '{{ resolv_file.diff.before.attributes }} is not defined' failed. The error was: error while evaluating conditional ({{ resolv_file.diff.before.attributes }} is not defined): 'dict object' has no attribute 'attributes'"}
+2021-08-09 17:12:56,086 p=14337 u=unix n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{
+resolv_file.diff.before.attributes }} is not defined
+
+2021-08-09 17:12:56,091 p=14314 u=unix n=ansible | fatal: [centos01]: FAILED! => {"msg": "The conditional check '{{ resolv_file.diff.before.attributes }} is not defined' failed. The error was: error while evaluating conditional ({{ resolv_file.diff.before.attributes }} is not defined): 'dict object' has no attribute 'attributes'"}
+2021-08-09 17:12:56,093 p=14314 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:12:56,094 p=14314 u=unix n=ansible | centos01                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:12:56,095 p=14314 u=unix n=ansible | centos02                   : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:13:18,556 p=14378 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:13:18,599 p=14378 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:13:25,388 p=14378 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:13:30,008 p=14378 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:13:30,037 p=14378 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:13:31,112 p=14378 u=unix n=ansible | changed: [centos02]
+2021-08-09 17:13:31,118 p=14378 u=unix n=ansible | changed: [centos01]
+2021-08-09 17:13:31,144 p=14378 u=unix n=ansible | TASK [display var] ***************************************************************************************************
+2021-08-09 17:13:31,228 p=14378 u=unix n=ansible | ok: [centos01] => {
+    "resolv_file": {
+        "changed": true,
+        "diff": {
+            "after": {
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:13:31,258 p=14378 u=unix n=ansible | ok: [centos02] => {
+    "resolv_file": {
+        "changed": true,
+        "diff": {
+            "after": {
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:13:31,262 p=14378 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:13:31,263 p=14378 u=unix n=ansible | centos01                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:13:31,264 p=14378 u=unix n=ansible | centos02                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:14:19,722 p=14462 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:14:19,761 p=14462 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:14:26,474 p=14462 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:14:26,597 p=14462 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:14:26,626 p=14462 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:14:27,716 p=14462 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:14:27,718 p=14462 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:14:27,743 p=14462 u=unix n=ansible | TASK [display var] ***************************************************************************************************
+2021-08-09 17:14:27,823 p=14462 u=unix n=ansible | ok: [centos01] => {
+    "resolv_file": {
+        "changed": false,
+        "diff": {
+            "after": {
+                "attributes": "+i",
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "attributes": "",
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:14:27,852 p=14462 u=unix n=ansible | ok: [centos02] => {
+    "resolv_file": {
+        "changed": false,
+        "diff": {
+            "after": {
+                "attributes": "+i",
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "attributes": "",
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:14:27,855 p=14462 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:14:27,855 p=14462 u=unix n=ansible | centos01                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:14:27,855 p=14462 u=unix n=ansible | centos02                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:14:45,442 p=14511 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:14:45,481 p=14511 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:14:51,550 p=14511 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:14:51,568 p=14511 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:14:51,594 p=14511 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:14:52,671 p=14511 u=unix n=ansible | changed: [centos01]
+2021-08-09 17:14:52,764 p=14511 u=unix n=ansible | changed: [centos02]
+2021-08-09 17:14:52,790 p=14511 u=unix n=ansible | TASK [display var] ***************************************************************************************************
+2021-08-09 17:14:52,874 p=14511 u=unix n=ansible | ok: [centos01] => {
+    "resolv_file": {
+        "changed": true,
+        "diff": {
+            "after": {
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:14:52,904 p=14511 u=unix n=ansible | ok: [centos02] => {
+    "resolv_file": {
+        "changed": true,
+        "diff": {
+            "after": {
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:14:52,908 p=14511 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:14:52,909 p=14511 u=unix n=ansible | centos01                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:14:52,909 p=14511 u=unix n=ansible | centos02                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:15:24,861 p=14581 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:15:24,900 p=14581 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:15:27,113 p=14581 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:15:31,624 p=14581 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:15:31,657 p=14581 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:15:32,712 p=14581 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:15:32,725 p=14581 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:15:32,753 p=14581 u=unix n=ansible | TASK [display var] ***************************************************************************************************
+2021-08-09 17:15:32,836 p=14581 u=unix n=ansible | ok: [centos01] => {
+    "resolv_file": {
+        "changed": false,
+        "diff": {
+            "after": {
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:15:32,867 p=14581 u=unix n=ansible | ok: [centos02] => {
+    "resolv_file": {
+        "changed": false,
+        "diff": {
+            "after": {
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:15:32,872 p=14581 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:15:32,872 p=14581 u=unix n=ansible | centos01                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:15:32,873 p=14581 u=unix n=ansible | centos02                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:15:59,249 p=14646 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:15:59,287 p=14646 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:16:05,709 p=14646 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:16:10,346 p=14646 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:16:10,376 p=14646 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:16:11,457 p=14646 u=unix n=ansible | changed: [centos02]
+2021-08-09 17:16:11,470 p=14646 u=unix n=ansible | changed: [centos01]
+2021-08-09 17:16:11,499 p=14646 u=unix n=ansible | TASK [display var] ***************************************************************************************************
+2021-08-09 17:16:11,589 p=14646 u=unix n=ansible | ok: [centos01] => {
+    "resolv_file": {
+        "changed": true,
+        "diff": {
+            "after": {
+                "attributes": "+i",
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "attributes": "",
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:16:11,639 p=14646 u=unix n=ansible | ok: [centos02] => {
+    "resolv_file": {
+        "changed": true,
+        "diff": {
+            "after": {
+                "attributes": "+i",
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "attributes": "",
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:16:11,644 p=14646 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:16:11,645 p=14646 u=unix n=ansible | centos01                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:16:11,645 p=14646 u=unix n=ansible | centos02                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:16:59,642 p=14696 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:16:59,683 p=14696 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:17:01,850 p=14696 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:17:06,260 p=14696 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:17:06,285 p=14696 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:17:07,392 p=14696 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:17:07,412 p=14696 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:17:07,438 p=14696 u=unix n=ansible | TASK [display var] ***************************************************************************************************
+2021-08-09 17:17:07,530 p=14696 u=unix n=ansible | ok: [centos01] => {
+    "resolv_file": {
+        "changed": false,
+        "diff": {
+            "after": {
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:17:07,560 p=14696 u=unix n=ansible | ok: [centos02] => {
+    "resolv_file": {
+        "changed": false,
+        "diff": {
+            "after": {
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:17:07,563 p=14696 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:17:07,564 p=14696 u=unix n=ansible | centos01                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:17:07,564 p=14696 u=unix n=ansible | centos02                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:19:32,223 p=14781 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:19:32,261 p=14781 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:19:38,520 p=14781 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:19:40,483 p=14781 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:19:40,511 p=14781 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:19:41,631 p=14781 u=unix n=ansible | changed: [centos01]
+2021-08-09 17:19:41,652 p=14781 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:19:41,675 p=14781 u=unix n=ansible | TASK [display var] ***************************************************************************************************
+2021-08-09 17:19:41,763 p=14781 u=unix n=ansible | ok: [centos01] => {
+    "resolv_file": {
+        "changed": true,
+        "diff": {
+            "after": {
+                "attributes": "+i",
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "attributes": "",
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:19:41,789 p=14781 u=unix n=ansible | ok: [centos02] => {
+    "resolv_file": {
+        "changed": false,
+        "diff": {
+            "after": {
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:19:41,793 p=14781 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:19:41,794 p=14781 u=unix n=ansible | centos01                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:19:41,795 p=14781 u=unix n=ansible | centos02                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:28:58,596 p=14955 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02NoTsl/web-notls.yml': line 18, column 67, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+    #changed_when: '"i" not in resolv_file.diff.before.attributes'
+    changed_when: "resolv_file.diff.before.attributes is defined" and "'i' not in resolv_file.diff.before.attributes"
+                                                                  ^ here
+We could be wrong, but this one looks like it might be an issue with
+unbalanced quotes. If starting a value with a quote, make sure the
+line ends with the same set of quotes. For instance this arbitrary
+example:
+
+    foo: "bad" "wolf"
+
+Could be written as:
+
+    foo: '"bad" "wolf"'
+
+2021-08-09 17:29:23,618 p=14981 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:29:23,660 p=14981 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:29:31,501 p=14981 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:29:31,651 p=14981 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:29:31,676 p=14981 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:29:32,793 p=14981 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:29:32,821 p=14981 u=unix n=ansible | changed: [centos02]
+2021-08-09 17:29:32,852 p=14981 u=unix n=ansible | TASK [display var] ***************************************************************************************************
+2021-08-09 17:29:32,934 p=14981 u=unix n=ansible | ok: [centos01] => {
+    "resolv_file": {
+        "changed": false,
+        "diff": {
+            "after": {
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:29:32,967 p=14981 u=unix n=ansible | ok: [centos02] => {
+    "resolv_file": {
+        "changed": true,
+        "diff": {
+            "after": {
+                "attributes": "+i",
+                "path": "/etc/resolv.conf"
+            },
+            "before": {
+                "attributes": "",
+                "path": "/etc/resolv.conf"
+            }
+        },
+        "failed": false,
+        "gid": 0,
+        "group": "root",
+        "mode": "0644",
+        "owner": "root",
+        "path": "/etc/resolv.conf",
+        "secontext": "system_u:object_r:net_conf_t:s0",
+        "size": 197,
+        "state": "file",
+        "uid": 0
+    }
+}
+2021-08-09 17:29:32,971 p=14981 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:29:32,972 p=14981 u=unix n=ansible | centos01                   : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:29:32,973 p=14981 u=unix n=ansible | centos02                   : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:31:08,746 p=15063 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:31:08,786 p=15063 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:31:12,215 p=15063 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:31:16,934 p=15063 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:31:16,963 p=15063 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:31:18,031 p=15063 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:31:18,045 p=15063 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:31:18,050 p=15063 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:31:18,051 p=15063 u=unix n=ansible | centos01                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:31:18,052 p=15063 u=unix n=ansible | centos02                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:31:21,028 p=15114 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:31:21,069 p=15114 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:31:27,496 p=15114 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:31:27,511 p=15114 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:31:27,539 p=15114 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:31:28,617 p=15114 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:31:28,626 p=15114 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:31:28,632 p=15114 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:31:28,632 p=15114 u=unix n=ansible | centos01                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:31:28,633 p=15114 u=unix n=ansible | centos02                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:31:42,774 p=15167 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:31:42,816 p=15167 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:31:49,600 p=15167 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:31:53,941 p=15167 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:31:53,970 p=15167 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:31:55,073 p=15167 u=unix n=ansible | changed: [centos01]
+2021-08-09 17:31:55,082 p=15167 u=unix n=ansible | changed: [centos02]
+2021-08-09 17:31:55,088 p=15167 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:31:55,089 p=15167 u=unix n=ansible | centos01                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:31:55,089 p=15167 u=unix n=ansible | centos02                   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:31:57,761 p=15213 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:31:57,803 p=15213 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:31:59,916 p=15213 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:32:04,460 p=15213 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:32:04,487 p=15213 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:32:05,552 p=15213 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:32:05,582 p=15213 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:32:05,586 p=15213 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:32:05,587 p=15213 u=unix n=ansible | centos01                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:32:05,588 p=15213 u=unix n=ansible | centos02                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:33:19,291 p=15293 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:33:19,331 p=15293 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:33:32,013 p=15293 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:33:32,017 p=15293 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:33:32,040 p=15293 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:33:33,217 p=15293 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:33:33,259 p=15293 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:33:33,265 p=15293 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:33:33,265 p=15293 u=unix n=ansible | centos01                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:33:33,266 p=15293 u=unix n=ansible | centos02                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:33:44,707 p=15352 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:33:44,745 p=15352 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:33:51,394 p=15352 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:33:51,467 p=15352 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:33:51,492 p=15352 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:33:52,706 p=15352 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:33:52,732 p=15352 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:33:52,737 p=15352 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:33:52,738 p=15352 u=unix n=ansible | centos01                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:33:52,739 p=15352 u=unix n=ansible | centos02                   : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:35:24,050 p=15418 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:35:24,090 p=15418 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:35:35,950 p=15418 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:35:37,019 p=15418 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:35:37,044 p=15418 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:35:38,131 p=15418 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:35:38,156 p=15418 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:35:38,180 p=15418 u=unix n=ansible | TASK [Install nginx] *************************************************************************************************
+2021-08-09 17:35:40,830 p=15418 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:35:40,883 p=15418 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:35:40,902 p=15418 u=unix n=ansible | TASK [create folder sites-enabled inside /etc/nginx] *****************************************************************
+2021-08-09 17:35:41,787 p=15418 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:35:41,800 p=15418 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:35:41,826 p=15418 u=unix n=ansible | TASK [create folder sites-available inside /etc/nginx] ***************************************************************
+2021-08-09 17:35:42,701 p=15418 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:35:42,712 p=15418 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:35:42,740 p=15418 u=unix n=ansible | TASK [copy nginx config file] ****************************************************************************************
+2021-08-09 17:35:44,429 p=15418 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:35:44,430 p=15418 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:35:44,458 p=15418 u=unix n=ansible | TASK [copy template nginx config file] *******************************************************************************
+2021-08-09 17:35:46,093 p=15418 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:35:46,104 p=15418 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:35:46,132 p=15418 u=unix n=ansible | TASK [enable configuration] ******************************************************************************************
+2021-08-09 17:35:47,067 p=15418 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:35:47,098 p=15418 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:35:47,129 p=15418 u=unix n=ansible | TASK [copy index.html] ***********************************************************************************************
+2021-08-09 17:35:49,049 p=15418 u=unix n=ansible | changed: [centos01]
+2021-08-09 17:35:49,067 p=15418 u=unix n=ansible | changed: [centos02]
+2021-08-09 17:35:49,070 p=15418 u=unix n=ansible | RUNNING HANDLER [restart nginx] **************************************************************************************
+2021-08-09 17:35:50,680 p=15418 u=unix n=ansible | changed: [centos01]
+2021-08-09 17:35:50,684 p=15418 u=unix n=ansible | changed: [centos02]
+2021-08-09 17:35:50,688 p=15418 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:35:50,688 p=15418 u=unix n=ansible | centos01                   : ok=10   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:35:50,689 p=15418 u=unix n=ansible | centos02                   : ok=10   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:36:05,216 p=15643 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:36:05,255 p=15643 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:36:07,171 p=15643 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:36:11,793 p=15643 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:36:11,820 p=15643 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:36:12,881 p=15643 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:36:12,887 p=15643 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:36:12,914 p=15643 u=unix n=ansible | TASK [Install nginx] *************************************************************************************************
+2021-08-09 17:36:15,513 p=15643 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:36:15,524 p=15643 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:36:15,549 p=15643 u=unix n=ansible | TASK [create folder sites-enabled inside /etc/nginx] *****************************************************************
+2021-08-09 17:36:16,479 p=15643 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:36:16,504 p=15643 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:36:16,532 p=15643 u=unix n=ansible | TASK [create folder sites-available inside /etc/nginx] ***************************************************************
+2021-08-09 17:36:17,382 p=15643 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:36:17,405 p=15643 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:36:17,433 p=15643 u=unix n=ansible | TASK [copy nginx config file] ****************************************************************************************
+2021-08-09 17:36:19,148 p=15643 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:36:19,150 p=15643 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:36:19,176 p=15643 u=unix n=ansible | TASK [copy template nginx config file] *******************************************************************************
+2021-08-09 17:36:20,765 p=15643 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:36:20,794 p=15643 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:36:20,820 p=15643 u=unix n=ansible | TASK [enable configuration] ******************************************************************************************
+2021-08-09 17:36:21,722 p=15643 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:36:21,751 p=15643 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:36:21,780 p=15643 u=unix n=ansible | TASK [copy index.html] ***********************************************************************************************
+2021-08-09 17:36:23,773 p=15643 u=unix n=ansible | changed: [centos02]
+2021-08-09 17:36:23,779 p=15643 u=unix n=ansible | changed: [centos01]
+2021-08-09 17:36:23,782 p=15643 u=unix n=ansible | RUNNING HANDLER [restart nginx] **************************************************************************************
+2021-08-09 17:36:25,367 p=15643 u=unix n=ansible | changed: [centos02]
+2021-08-09 17:36:25,368 p=15643 u=unix n=ansible | changed: [centos01]
+2021-08-09 17:36:25,373 p=15643 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:36:25,373 p=15643 u=unix n=ansible | centos01                   : ok=10   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:36:25,374 p=15643 u=unix n=ansible | centos02                   : ok=10   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:40:26,901 p=15958 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02NoTsl/web-notls.yml': line 73, column 8, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+         state: enabled
+       notify:
+       ^ here
+
+2021-08-09 17:42:03,847 p=15988 u=unix n=ansible | ERROR! Syntax Error while loading YAML.
+  did not find expected key
+
+The error appears to be in '/mnt/d/mk8s/myStudy/Ansible/chapter02NoTsl/web-notls.yml': line 88, column 8, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+        state: restarted
+       handlers:
+       ^ here
+
+2021-08-09 17:42:21,856 p=16003 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:42:21,897 p=16003 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:42:24,474 p=16003 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:42:29,678 p=16003 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:42:29,707 p=16003 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:42:30,766 p=16003 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:42:30,779 p=16003 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:42:30,807 p=16003 u=unix n=ansible | TASK [Install nginx] *************************************************************************************************
+2021-08-09 17:42:33,428 p=16003 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:42:33,435 p=16003 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:42:33,460 p=16003 u=unix n=ansible | TASK [create folder sites-enabled inside /etc/nginx] *****************************************************************
+2021-08-09 17:42:34,355 p=16003 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:42:34,380 p=16003 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:42:34,411 p=16003 u=unix n=ansible | TASK [create folder sites-available inside /etc/nginx] ***************************************************************
+2021-08-09 17:42:35,284 p=16003 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:42:35,307 p=16003 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:42:35,334 p=16003 u=unix n=ansible | TASK [copy nginx config file] ****************************************************************************************
+2021-08-09 17:42:37,056 p=16003 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:42:37,067 p=16003 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:42:37,093 p=16003 u=unix n=ansible | TASK [copy template nginx config file] *******************************************************************************
+2021-08-09 17:42:38,688 p=16003 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:42:38,698 p=16003 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:42:38,719 p=16003 u=unix n=ansible | TASK [enable configuration] ******************************************************************************************
+2021-08-09 17:42:39,644 p=16003 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:42:39,667 p=16003 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:42:39,698 p=16003 u=unix n=ansible | TASK [copy index.html] ***********************************************************************************************
+2021-08-09 17:42:41,596 p=16003 u=unix n=ansible | changed: [centos01]
+2021-08-09 17:42:41,612 p=16003 u=unix n=ansible | changed: [centos02]
+2021-08-09 17:42:41,638 p=16003 u=unix n=ansible | TASK [enabling port number 21 in firewall so that application user can connect.] *************************************
+2021-08-09 17:42:42,971 p=16003 u=unix n=ansible | changed: [centos01]
+2021-08-09 17:42:42,975 p=16003 u=unix n=ansible | changed: [centos02]
+2021-08-09 17:42:42,995 p=16003 u=unix n=ansible | TASK [adding http service to firewall] *******************************************************************************
+2021-08-09 17:42:44,297 p=16003 u=unix n=ansible | changed: [centos01]
+2021-08-09 17:42:44,318 p=16003 u=unix n=ansible | changed: [centos02]
+2021-08-09 17:42:44,320 p=16003 u=unix n=ansible | RUNNING HANDLER [restart nginx] **************************************************************************************
+2021-08-09 17:42:45,895 p=16003 u=unix n=ansible | changed: [centos01]
+2021-08-09 17:42:45,933 p=16003 u=unix n=ansible | changed: [centos02]
+2021-08-09 17:42:45,934 p=16003 u=unix n=ansible | RUNNING HANDLER [restart the firewall] *******************************************************************************
+2021-08-09 17:42:47,401 p=16003 u=unix n=ansible | changed: [centos01]
+2021-08-09 17:42:47,435 p=16003 u=unix n=ansible | changed: [centos02]
+2021-08-09 17:42:47,440 p=16003 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:42:47,440 p=16003 u=unix n=ansible | centos01                   : ok=13   changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:42:47,441 p=16003 u=unix n=ansible | centos02                   : ok=13   changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:43:17,806 p=16301 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 17:43:17,849 p=16301 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 17:43:29,122 p=16301 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:43:33,574 p=16301 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:43:33,598 p=16301 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 17:43:34,676 p=16301 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:43:34,875 p=16301 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:43:34,903 p=16301 u=unix n=ansible | TASK [Install nginx] *************************************************************************************************
+2021-08-09 17:43:37,505 p=16301 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:43:37,701 p=16301 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:43:37,722 p=16301 u=unix n=ansible | TASK [create folder sites-enabled inside /etc/nginx] *****************************************************************
+2021-08-09 17:43:38,599 p=16301 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:43:38,831 p=16301 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:43:38,860 p=16301 u=unix n=ansible | TASK [create folder sites-available inside /etc/nginx] ***************************************************************
+2021-08-09 17:43:39,706 p=16301 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:43:39,800 p=16301 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:43:39,827 p=16301 u=unix n=ansible | TASK [copy nginx config file] ****************************************************************************************
+2021-08-09 17:43:41,550 p=16301 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:43:41,555 p=16301 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:43:41,581 p=16301 u=unix n=ansible | TASK [copy template nginx config file] *******************************************************************************
+2021-08-09 17:43:43,193 p=16301 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:43:43,198 p=16301 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:43:43,225 p=16301 u=unix n=ansible | TASK [enable configuration] ******************************************************************************************
+2021-08-09 17:43:44,128 p=16301 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:43:44,148 p=16301 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:43:44,169 p=16301 u=unix n=ansible | TASK [copy index.html] ***********************************************************************************************
+2021-08-09 17:43:46,205 p=16301 u=unix n=ansible | changed: [centos02]
+2021-08-09 17:43:46,236 p=16301 u=unix n=ansible | changed: [centos01]
+2021-08-09 17:43:46,271 p=16301 u=unix n=ansible | TASK [enabling port number 80 in firewall so that application user can connect.] *************************************
+2021-08-09 17:43:47,642 p=16301 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:43:47,643 p=16301 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:43:47,671 p=16301 u=unix n=ansible | TASK [adding http service to firewall] *******************************************************************************
+2021-08-09 17:43:48,842 p=16301 u=unix n=ansible | ok: [centos01]
+2021-08-09 17:43:48,866 p=16301 u=unix n=ansible | ok: [centos02]
+2021-08-09 17:43:48,868 p=16301 u=unix n=ansible | RUNNING HANDLER [restart nginx] **************************************************************************************
+2021-08-09 17:43:50,531 p=16301 u=unix n=ansible | changed: [centos01]
+2021-08-09 17:43:50,540 p=16301 u=unix n=ansible | changed: [centos02]
+2021-08-09 17:43:50,544 p=16301 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 17:43:50,544 p=16301 u=unix n=ansible | centos01                   : ok=12   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 17:43:50,545 p=16301 u=unix n=ansible | centos02                   : ok=12   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 21:43:46,095 p=20654 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 21:43:46,137 p=20654 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 21:43:49,849 p=20654 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:43:54,472 p=20654 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:43:54,507 p=20654 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 21:43:55,627 p=20654 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:43:55,694 p=20654 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:43:55,728 p=20654 u=unix n=ansible | TASK [Install nginx] *************************************************************************************************
+2021-08-09 21:43:58,401 p=20654 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:43:58,437 p=20654 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:43:58,461 p=20654 u=unix n=ansible | TASK [create folder sites-enabled inside /etc/nginx] *****************************************************************
+2021-08-09 21:43:59,387 p=20654 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:43:59,409 p=20654 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:43:59,439 p=20654 u=unix n=ansible | TASK [create folder sites-available inside /etc/nginx] ***************************************************************
+2021-08-09 21:44:00,312 p=20654 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:44:00,348 p=20654 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:44:00,383 p=20654 u=unix n=ansible | TASK [copy nginx config file] ****************************************************************************************
+2021-08-09 21:44:02,092 p=20654 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:44:02,098 p=20654 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:44:02,131 p=20654 u=unix n=ansible | TASK [copy template nginx config file] *******************************************************************************
+2021-08-09 21:44:03,689 p=20654 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:44:03,715 p=20654 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:44:03,752 p=20654 u=unix n=ansible | TASK [enable configuration] ******************************************************************************************
+2021-08-09 21:44:04,624 p=20654 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:44:04,664 p=20654 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:44:04,697 p=20654 u=unix n=ansible | TASK [copy index.html] ***********************************************************************************************
+2021-08-09 21:44:06,675 p=20654 u=unix n=ansible | changed: [centos01]
+2021-08-09 21:44:06,676 p=20654 u=unix n=ansible | changed: [centos02]
+2021-08-09 21:44:06,710 p=20654 u=unix n=ansible | TASK [enabling port number 80 in firewall so that application user can connect.] *************************************
+2021-08-09 21:44:08,044 p=20654 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:44:08,068 p=20654 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:44:08,102 p=20654 u=unix n=ansible | TASK [adding http service to firewall] *******************************************************************************
+2021-08-09 21:44:09,310 p=20654 u=unix n=ansible | ok: [centos01]
+2021-08-09 21:44:09,376 p=20654 u=unix n=ansible | ok: [centos02]
+2021-08-09 21:44:09,379 p=20654 u=unix n=ansible | RUNNING HANDLER [restart nginx] **************************************************************************************
+2021-08-09 21:44:11,038 p=20654 u=unix n=ansible | changed: [centos01]
+2021-08-09 21:44:11,064 p=20654 u=unix n=ansible | changed: [centos02]
+2021-08-09 21:44:11,067 p=20654 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 21:44:11,068 p=20654 u=unix n=ansible | centos01                   : ok=12   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 21:44:11,068 p=20654 u=unix n=ansible | centos02                   : ok=12   changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 23:32:48,919 p=24913 u=unix n=ansible | PLAY [This play is for configuring nginx web server with no TLS on Centos Servers] ***********************************
+2021-08-09 23:32:48,967 p=24913 u=unix n=ansible | TASK [Gathering Facts] ***********************************************************************************************
+2021-08-09 23:32:52,639 p=24913 u=unix n=ansible | ok: [centos01]
+2021-08-09 23:32:57,023 p=24913 u=unix n=ansible | ok: [centos02]
+2021-08-09 23:32:57,052 p=24913 u=unix n=ansible | TASK [Ensure resolv.conf is immutable.] ******************************************************************************
+2021-08-09 23:32:58,277 p=24913 u=unix n=ansible | ok: [centos01]
+2021-08-09 23:32:58,289 p=24913 u=unix n=ansible | ok: [centos02]
+2021-08-09 23:32:58,318 p=24913 u=unix n=ansible | TASK [Install nginx] *************************************************************************************************
+2021-08-09 23:33:04,633 p=24913 u=unix n=ansible | changed: [centos02]
+2021-08-09 23:33:04,713 p=24913 u=unix n=ansible | changed: [centos01]
+2021-08-09 23:33:04,749 p=24913 u=unix n=ansible | TASK [create folder sites-enabled inside /etc/nginx] *****************************************************************
+2021-08-09 23:33:06,060 p=24913 u=unix n=ansible | ok: [centos02]
+2021-08-09 23:33:06,139 p=24913 u=unix n=ansible | ok: [centos01]
+2021-08-09 23:33:06,170 p=24913 u=unix n=ansible | TASK [create folder sites-available inside /etc/nginx] ***************************************************************
+2021-08-09 23:33:07,251 p=24913 u=unix n=ansible | ok: [centos02]
+2021-08-09 23:33:07,586 p=24913 u=unix n=ansible | ok: [centos01]
+2021-08-09 23:33:07,617 p=24913 u=unix n=ansible | TASK [copy nginx config file] ****************************************************************************************
+2021-08-09 23:33:10,075 p=24913 u=unix n=ansible | changed: [centos01]
+2021-08-09 23:33:10,076 p=24913 u=unix n=ansible | changed: [centos02]
+2021-08-09 23:33:10,102 p=24913 u=unix n=ansible | TASK [copy template nginx config file] *******************************************************************************
+2021-08-09 23:33:12,172 p=24913 u=unix n=ansible | changed: [centos02]
+2021-08-09 23:33:12,537 p=24913 u=unix n=ansible | changed: [centos01]
+2021-08-09 23:33:12,576 p=24913 u=unix n=ansible | TASK [enable configuration] ******************************************************************************************
+2021-08-09 23:33:13,641 p=24913 u=unix n=ansible | ok: [centos02]
+2021-08-09 23:33:13,791 p=24913 u=unix n=ansible | ok: [centos01]
+2021-08-09 23:33:13,823 p=24913 u=unix n=ansible | TASK [copy index.html] ***********************************************************************************************
+2021-08-09 23:33:15,931 p=24913 u=unix n=ansible | changed: [centos02]
+2021-08-09 23:33:15,961 p=24913 u=unix n=ansible | changed: [centos01]
+2021-08-09 23:33:16,000 p=24913 u=unix n=ansible | TASK [enabling port number 80 in firewall so that application user can connect.] *************************************
+2021-08-09 23:33:17,516 p=24913 u=unix n=ansible | ok: [centos01]
+2021-08-09 23:33:17,534 p=24913 u=unix n=ansible | ok: [centos02]
+2021-08-09 23:33:17,559 p=24913 u=unix n=ansible | TASK [adding http service to firewall] *******************************************************************************
+2021-08-09 23:33:18,981 p=24913 u=unix n=ansible | ok: [centos02]
+2021-08-09 23:33:19,027 p=24913 u=unix n=ansible | ok: [centos01]
+2021-08-09 23:33:19,030 p=24913 u=unix n=ansible | RUNNING HANDLER [restart nginx] **************************************************************************************
+2021-08-09 23:33:21,032 p=24913 u=unix n=ansible | changed: [centos02]
+2021-08-09 23:33:21,069 p=24913 u=unix n=ansible | changed: [centos01]
+2021-08-09 23:33:21,073 p=24913 u=unix n=ansible | PLAY RECAP ***********************************************************************************************************
+2021-08-09 23:33:21,074 p=24913 u=unix n=ansible | centos01                   : ok=12   changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2021-08-09 23:33:21,075 p=24913 u=unix n=ansible | centos02                   : ok=12   changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

@@ -1,0 +1,91 @@
+---
+- name: This play is for configuring nginx web server with no TLS on Centos Servers
+  hosts: centosgrp
+  become: True
+  become_user: root
+  gather_facts: True
+  vars:
+    my_file: /etc/resolv.conf
+
+  tasks:
+
+  - name: Ensure resolv.conf is immutable.
+    file:
+      path: "{{ my_file }}"
+      attr: +i
+    register: resolv_file
+    changed_when:
+      -  resolv_file.diff.before.attributes is defined 
+      -  "'i' not in resolv_file.diff.before.attributes"
+# Note: chattr +i will make file immutable(file can not be changed) and chattr -i make file mutable. 
+# to see current status of bit we use lsattr filename.
+# Now i can have 2 cases and we need to understand that.
+# Case 1. file is already immutable. then resolv_file.diff.before.attributes is not defined.  
+# Case 2. file is not mutable. then resolv_file.diff.before.attributes is defined and its value is "".
+
+#  - name: display var
+#    debug:
+#      var: resolv_file
+
+  - name: Install nginx
+    yum: 
+      name: nginx 
+      state: present
+
+  - name: create folder sites-enabled inside /etc/nginx
+    file: 
+      path: /etc/nginx/sites-enabled 
+      state: directory
+
+  - name: create folder sites-available inside /etc/nginx
+    file: 
+      path: /etc/nginx/sites-available 
+      state: directory
+
+  - name: copy nginx config file
+    template: 
+      src: templates/nginx.conf 
+      dest: /etc/nginx/nginx.conf
+
+  - name: copy template nginx config file
+    template: 
+       src: templates/nginx.conf.j2 
+       dest: /etc/nginx/sites-available/default
+
+  - name: enable configuration
+    file: 
+      dest: /etc/nginx/sites-enabled/default 
+      src: /etc/nginx/sites-available/default
+      state: link
+
+  - name: copy index.html
+    template: 
+      src: templates/index.html.j2 
+      dest: /usr/share/nginx/html/index.html 
+      mode: 0644
+    notify: restart nginx
+
+  - name: enabling port number 80 in firewall so that application user can connect.
+    firewalld:
+      port: 80/tcp
+      permanent: yes
+      state: enabled
+    notify:
+      - restart the firewall
+  - name: adding http service to firewall
+    firewalld:
+      service: http
+      permanent: yes
+      state: enabled
+    notify:
+      - restart the firewall
+
+  handlers:
+    - name: restart nginx
+      service: 
+        name: nginx 
+        state: restarted
+    - name: restart the firewall
+      service:
+        name: firewalld
+        state: reloaded 

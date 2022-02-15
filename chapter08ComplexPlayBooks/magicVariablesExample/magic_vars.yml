@@ -1,0 +1,24 @@
+- name: This play is to expalin you the power of magic variables in ansible.
+  hosts: all
+  gather_facts: True
+  become: True
+  become_user: root
+  vars:
+    j2TemplateSrc: ./templates/loop_over_hosts.j2
+    outputOfTemplate: ./output.txt
+  tasks:
+    #- name: Show hostvars[inventory_hostname]
+    #debug: var=hostvars[inventory_hostname]
+  - name: Show ansible_ssh_host variable in hostvars
+    debug: var=hostvars[inventory_hostname].ansible_os_family
+    # below it clarify syntax of echoing variable with msg and var.
+  - name: Show group_names
+    debug: 
+      msg: "{{group_names}}"
+  - name: Show groups
+    debug: 
+      var: groups
+  - name: using jinja2 template 
+    template:
+      src: "{{j2TemplateSrc}}"
+      dest: "{{outputOfTemplate}}"

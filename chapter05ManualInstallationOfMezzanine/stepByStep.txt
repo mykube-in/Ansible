@@ -1,0 +1,308 @@
+Install - Mezzanine - content management system (CMS)
+https://www.rosehosting.com/blog/how-to-install-mezzanine-cms-on-centos-7/
+
+yum remove -y mariadb-server
+rm -rf /var/lib/mysql 
+
+yum install  -y mariadb-server
+systemctl enable mariadb
+systemctl start mariadb
+mysql_secure_installation
+In order to log into MariaDB to secure it, we'll need the current
+password for the root user.  If you've just installed MariaDB, and
+you haven't set the root password yet, the password will be blank,
+so you should just press enter here.
+Enter current password for root (enter for none):  [Enter] key
+Set root password? [Y/n]: Y
+New password: root@123
+Re-enter new password: root@123
+Remove anonymous users? [Y/n]: Y
+Disallow root login remotely? [Y/n]: Y
+Remove test database and access to it? [Y/n]: Y
+Reload privilege tables now? [Y/n]: Y
+[root@NAT8 ~]# mysql -u root -p
+Enter password:root@123
+MariaDB [(none)]> GRANT ALL PRIVILEGES ON *.* TO 'root'@'localhost' IDENTIFIED BY 'SECRET-R';
+MariaDB [(none)]> create database mezzanine_db;
+MariaDB [(none)]> grant all on mezzanine.* to amitadmin@localhost identified by 'AMIT-M';
+MariaDB [(none)]> flush privileges;
+MariaDB [(none)]> quit
+[root@NAT8 ~]# usermod -aG wheel amitadmin
+[root@NAT8 ~]# id -a amitadmin
+uid=1000(amitadmin) gid=1000(amitadmin) groups=1000(amitadmin),10(wheel)
+[root@NAT8 ~]# su - amitadmin
+Last login: Tue Feb 16 16:32:18 UTC 2021 from 223.235.88.174 on pts/1
+
+
+[amitadmin@NAT8 ~]$ pwd
+/home/amitadmin
+[amitadmin@NAT8 ~]$
+[amitadmin@NAT8 ~]$ python -m venv myVirEnv
+[amitadmin@NAT8 ~]$ source myVirEnv/bin/activate
+(myVirEnv) 
+[amitadmin@NAT8 ~]$
+(myVirEnv) [amitadmin@NAT8 ~]$ pip install mezzanine
+(myVirEnv) [amitadmin@NAT8 ~]$ pwd
+/home/amitadmin
+(myVirEnv) [amitadmin@NAT8 ~]$ which mezzanine-project
+~/myVirEnv/bin/mezzanine-project
+(myVirEnv) [amitadmin@NAT8 ~]$ mezzanine-project first_project
+(myVirEnv) [amitadmin@NAT8 ~]$ cd first_project
+(myVirEnv) [amitadmin@NAT8 first_project]$ ls
+deploy  fabfile.py  first_project  manage.py  requirements.txt
+(myVirEnv) [amitadmin@NAT8 first_project]$ pwd
+/home/amitadmin/first_project
+(myVirEnv) [amitadmin@NAT8 first_project]$ cat requirements.txt
+Mezzanine==4.3.1
+(myVirEnv) [amitadmin@NAT8 first_project]$
+(myVirEnv) [amitadmin@NAT8 first_project]$ pwd;cd first_project;pwd ; ls
+/home/amitadmin/first_project
+/home/amitadmin/first_project/first_project
+__init__.py  local_settings.py  settings.py  urls.py  wsgi.py
+(myVirEnv) [amitadmin@NAT8 first_project]$
+
+(myVirEnv) [amitadmin@NAT8 first_project]$ vi settings.py
+Change these lines 
+143 DATABASES = {
+144     "default": {
+145         # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
+146         "ENGINE": "django.db.backends.",
+147         # DB name or path to database file if using sqlite3.
+148         "NAME": "",
+149         # Not used with sqlite3.
+150         "USER": "",
+151         # Not used with sqlite3.
+152         "PASSWORD": "",
+153         # Set to empty string for localhost. Not used with sqlite3.
+154         "HOST": "",
+155         # Set to empty string for default. Not used with sqlite3.
+156         "PORT": "",
+157     }
+158 }
+
+to 
+
+143 DATABASES = {
+144     "default": {
+145         # Add "postgresql_psycopg2", "mysql", "sqlite3" or "oracle".
+146         "ENGINE": "django.db.backends.mysql",    #"django.db.backends.",
+147         # DB name or path to database file if using sqlite3.
+148         "NAME": "mezzanine_db",
+149         # Not used with sqlite3.
+150         "USER": "amitadmin",
+151         # Not used with sqlite3.
+152         "PASSWORD": "AMIT-M",
+153         # Set to empty string for localhost. Not used with sqlite3.
+154         "HOST": "",
+155         # Set to empty string for default. Not used with sqlite3.
+156         "PORT": "",
+157     }
+158 }
+
+
+(myVirEnv) [amitadmin@NAT8 first_project]$ pwd ; cd ..;pwd ; ls
+/home/amitadmin/first_project/first_project
+/home/amitadmin/first_project
+deploy  fabfile.py  first_project  manage.py  requirements.txt
+(myVirEnv) [amitadmin@NAT8 first_project]$
+
+(myVirEnv) [amitadmin@NAT8 first_project]$ python manage.py makemigrations                                          
+No changes detected
+(myVirEnv) [amitadmin@NAT8 first_project]$ python manage.py migrate
+Operations to perform:
+  Apply all migrations: admin, auth, blog, conf, contenttypes, core, django_comments, forms, galleries, generic, pages, redirects, sessions, sites, twitter
+Running migrations:
+  Applying contenttypes.0001_initial... OK
+  Applying twitter.0001_initial... OK
+(myVirEnv) [amitadmin@NAT8 first_project]$ python manage.py createsuperuser
+Username (leave blank to use 'amitadmin'):
+Email address: amitadmin@amit.com
+Password:amitadmin
+Password (again):amitadmin
+Superuser created successfully.
+(myVirEnv) [amitadmin@NAT8 first_project]$
+
+
+
+
+
+
+(myVirEnv) [amitadmin@NAT8 first_project]$ pwd
+/home/amitadmin/first_project
+(myVirEnv) [amitadmin@NAT8 first_project]$ vi first_project/settings.py
+
+28 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "::1"]
+ to 
+28 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "::1", "10.10.0.5"]
+(myVirEnv) [amitadmin@NAT8 first_project]$ python manage.py runserver 0.0.0.0:8000
+Query- from HOME I.e http://40.76.184.121:8000/
+Result - Invalid HTTP_HOST header: '40.76.184.121:8000'. You may need to add '40.76.184.121' to ALLOWED_HOSTS.
+[16/Feb/2021 15:54:01] "GET / HTTP/1.1" 400 67935
+
+
+
+
+
+(myVirEnv) [amitadmin@NAT8 first_project]$ vi first_project/local_settings.py
+ 27 # Allowed development hosts -add REAL IP OF server 40.76.184.121
+ 28 ALLOWED_HOSTS = ["localhost", "127.0.0.1", "::1", "10.10.0.5" ,"40.76.184.121"]
+Query- from HOME I.e http://40.76.184.121:8000/
+Result - 
+Django version 1.11.29, using settings 'first_project.settings'
+Starting development server at http://0.0.0.0:8000/
+Quit the server with CONTROL-C.
+[16/Feb/2021 15:58:46] "GET / HTTP/1.1" 200 4236
+[16/Feb/2021 15:58:47] "GET /static/css/mezzanine.css HTTP/1.1" 200 10785
+[16/Feb/2021 15:58:47] "GET /static/css/bootstrap-theme.css HTTP/1.1" 200 21368
+[16/Feb/2021 15:58:47] "GET /static/js/bootstrap.js HTTP/1.1" 200 60681
+[16/Feb/2021 15:58:47] "GET /static/js/bootstrap-extras.js HTTP/1.1" 200 2841
+[16/Feb/2021 15:58:47] "GET /static/css/bootstrap.css HTTP/1.1" 200 132546
+[16/Feb/2021 15:58:47] "GET /static/mezzanine/js/jquery-1.8.3.min.js HTTP/1.1" 200 93636
+
+URL - http://40.76.184.121:8000/admin/ local with usernamer : amitadmin@amit.com, amitadmin as password.
+
+
+
+
+
+(myVirEnv) [amitadmin@NAT8 first_project]$ pip install gunicorn
+(myVirEnv) [amitadmin@NAT8 first_project]$ python manage.py collectstatic
+Copying '/home/amitadmin/myVirEnv/lib64/python3.6/site-packages/mezzanine/conf/static/mezzanine/css/admin/settings.css'
+Copying '/home/amitadmin/myVirEnv/lib64/python3.6/site-packages/mezzanine/conf/static/mezzanine/js/admin/tabbed_translatable_settings.js'
+[root@NAT8 nginx]# cat /etc/systemd/system/gunicorn.service
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=amitadmin
+Group=nginx
+WorkingDirectory=/home/amitadmin/first_project
+ExecStart=/home/amitadmin/myVirEnv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/amitadmin/first_project.sock first_project.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+[root@NAT8 nginx]#
+
+
+[root@NAT8 ~]# systemctl daemon-reload
+[root@NAT8 ~]# systemctl start gunicorn
+[root@NAT8 ~]# systemctl status  gunicorn
+[root@NAT8 ~]# systemctl stop gunicorn
+
+
+
+[root@NAT8 conf.d]# pwd
+/etc/nginx/conf.d
+[root@NAT8 conf.d]# cat php-fpm.conf
+# PHP-FPM FastCGI server
+# network or unix domain socket configuration
+
+upstream php-fpm {
+        server unix:/run/php-fpm/www.sock;
+}
+[root@NAT8 conf.d]# cat /etc/nginx/conf.d/amit.com.conf
+server {
+     listen 80;
+     server_name nat8.amit.com;
+
+location = /favicon.ico { access_log off; log_not_found off; }
+
+location /static/ {
+     root /home/amitadmin/first_project;
+}
+
+location / {
+     proxy_set_header Host $http_host;
+     proxy_set_header X-Real-IP $remote_addr;
+     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+     proxy_set_header X-Forwarded-Proto $scheme;
+     proxy_pass http://unix:/home/amitadmin/first_project.sock;
+}
+}
+[root@NAT8 conf.d]#
+
+
+
+[root@NAT8 conf.d]# pwd
+/etc/nginx/conf.d
+[root@NAT8 conf.d]# cat php-fpm.conf
+# PHP-FPM FastCGI server
+# network or unix domain socket configuration
+
+upstream php-fpm {
+        server unix:/run/php-fpm/www.sock;
+}
+[root@NAT8 conf.d]#
+
+[root@NAT8 conf.d]# vi /etc/nginx/nginx.conf
+remove line that contain ipv6 information.
+
+[root@NAT8 conf.d]# nginx -t
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+[root@NAT8 conf.d]#
+[root@NAT8 conf.d]# systemctl start nginx
+[root@NAT8 conf.d]# systemctl status nginx
+[root@NAT8 conf.d]# usermod -aG amitadmin  nginx
+[root@NAT8 conf.d]# chmod 710 /home/amitadmin
+[root@NAT8 conf.d]# systemctl restart nginx
+[root@NAT8 conf.d]# systemctl status nginx
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[root@NAT8 nginx]# cat /etc/systemd/system/gunicorn.socket
+[Unit]
+Description=gunicorn socket
+
+[Socket]
+ListenStream=/home/amitadmin/first_project.sock
+
+[Install]
+WantedBy=sockets.target
+[root@NAT8 nginx]#
+[root@NAT8 nginx]# systemctl enable gunicorn.socket
+
+
+[root@NAT8 nginx]# cat /etc/systemd/system/gunicorn.service
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+User=amitadmin
+Group=nginx
+WorkingDirectory=/home/amitadmin/first_project
+ExecStart=/home/amitadmin/myVirEnv/bin/gunicorn --access-logfile - --workers 3 --bind unix:/home/amitadmin/first_project.sock first_project.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+[root@NAT8 nginx]#
+[root@NAT8 nginx]# file /home/amitadmin/first_project.sock
+/home/amitadmin/first_project.sock: socket
+
+
+[root@NAT8 nginx]# curl --unix-socket /home/amitadmin/first_project.sock  localhost
+this well show you HTML code of web page designed / hosted in django.
+
+
+
+
+
+
+
+

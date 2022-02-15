@@ -1,0 +1,24 @@
+# https://www.middlewareinventory.com/blog/ansible-wait_for-examples
+---
+- name: importance of gather_facts = True
+  hosts: all
+  become: True
+  gather_facts: True
+  tasks:
+  # Print the Dictionary
+    - name: setup
+      setup:
+      register: factone
+
+    - set_fact:
+        all_devices: "{{ factone.ansible_facts.ansible_devices.keys() }}"
+
+        # - name: collecting disks from ansible_devices gathered fact.
+        #debug:
+        #var: hostvars[inventory_hostname]["ansible_devices"].keys()
+    - name: collecting disks from ansible_devices gathered fact. 
+      debug: 
+        msg: {{ item }} 
+      loop: all_devices|list
+
+

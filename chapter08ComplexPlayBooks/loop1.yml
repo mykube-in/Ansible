@@ -1,0 +1,32 @@
+---
+- name: how to loop
+  hosts: localhost
+  gather_facts: True
+  become: True
+  become_user: root
+  vars:
+    packages:
+      - httpd
+      - dovecot
+ 
+  tasks:
+    - name: installing packages
+      yum:
+        name: "{{ item }}"
+        state: latest
+      loop: "{{ packages }}"
+      register: outputOfCmd
+
+    - name: displaying output of previous command
+      debug:
+        msg: "Here is output: {{outputOfCmd}}"
+
+    - name: copy output to some local file.
+      local_action: copy content="{{outputOfCmd}}" dest=./outputLogs/output.txt
+ 
+    - name: "copy the output using delegate_to: localhost"
+      copy:
+        src: ./outputLogs/output.txt
+        dest: ./outputLogs/output-extra.txt
+      delegate_to: localhost
+

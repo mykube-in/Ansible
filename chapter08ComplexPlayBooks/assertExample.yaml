@@ -1,0 +1,47 @@
+- name: this play book give example of assert.
+  hosts: localhost
+  become: True
+  become_user: root
+  gather_facts: True
+  vars:
+    mylist : []
+  tasks:
+
+  - name: check if memory is between 800 MB and 1100 MB
+    assert:
+      that:
+        - ansible_memtotal_mb | int >= 800
+        - ansible_memtotal_mb | int <= 1100
+      fail_msg: "this is fail_msg that Memory is {{ ansible_memtotal_mb }}MB not 1024MB"
+      success_msg: "this is success_msg that{{ansible_host}} is having memory {{ansible_memtotal_mb}})"
+    register: result
+    ignore_errors: yes
+    changed_when:
+      - result.evaluated_to is defined
+      - result.evaluated_to == False
+    failed_when: False
+
+  - name: debug task just to display output of result variable
+    debug:
+      msg: variable result = "{{result}}"
+
+  - name: validate that result variable is a dictionary type
+    assert:
+      that: ( result is defined ) and ( result | type_debug == "dict" )
+      success_msg: "this is success_msg that result variable is a dictionary"
+      fail_msg: "this is fail_msg that result variable is not a dictionary"
+
+  - name:  validate that mylist variable is list type
+    assert:
+      that: ( mylist is defined ) and ( mylist | type_debug == "list" )
+      success_msg: "this is success_msg that mylist {{mylist}} variable is a list"
+      fail_msg: "this is fail_msg that mylist {{mylist}} variable is not a list"
+
+  - name:  validate that mylist "{{mylist}}" variable is dictionary which is actully incorrect . Just to explore.
+    assert:
+      that: ( mylist is defined ) and ( mylist | type_debug == "dict" )
+      fail_msg: "this is fail_msg that mylist {{mylist}} variable is list"
+      success_msg: "this is success_msg that mylist {{mylist}} variable is a dict"
+    ignore_errors : yes
+
+

@@ -1,0 +1,12 @@
+---
+  - name: Demonstrating variables in Jinja2 Loops
+    hosts: localhost
+    connection: local
+    vars_files:
+      - templatesExampleVars.yml
+    gather_facts: True
+    become: True
+    become_user: root
+    tasks:
+      - name: Generating output.txt using Jinja2 template templatesExampleVarloop.j2
+        template: src=./templatesExampleVarloop.j2 dest=./output.txt

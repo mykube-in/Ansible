@@ -1,0 +1,16 @@
+# All Unix Server Group
+[unixservers:children]
+centosgrp 
+ubuntugrp 
+
+[unixservers:vars]
+ansible_user=amit
+
+# All Centos Server Group
+[centosgrp]
+centos01  ansible_python_interpreter=/usr/libexec/platform-python3.6 
+centos02  ansible_python_interpreter=/usr/libexec/platform-python3.6
+
+# All ubuntu Server group 
+[ubuntugrp]
+ubuntu0[1:2]

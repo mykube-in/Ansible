@@ -1,0 +1,8 @@
+{% for server in groups.Unix_SPL_Group %}
+{# this is a comment and won’t display #}
+{% if loop.index is divisibleby(2) %}
+{{ loop.index }} is {{ server }} with IP {{ hostvars[server].ansible_default_ipv4.address }}
+{% else %}
+{{ server }} with IP {{ hostvars[server].ansible_default_ipv4.address }}
+{% endif %}
+{% endfor %}

@@ -1,0 +1,138 @@
+
+PLAY [This play is to expalin you the power of magic variables in ansible.] ****
+
+TASK [Gathering Facts] *********************************************************
+ok: [NS1]
+ok: [JENKINS]
+ok: [DOCKER01]
+ok: [nat8]
+
+TASK [Show ansible_ssh_host variable in hostvars] ******************************
+ok: [DOCKER01] => {
+    "hostvars[inventory_hostname].ansible_os_family": "RedHat"
+}
+ok: [JENKINS] => {
+    "hostvars[inventory_hostname].ansible_os_family": "RedHat"
+}
+ok: [nat8] => {
+    "hostvars[inventory_hostname].ansible_os_family": "RedHat"
+}
+ok: [NS1] => {
+    "hostvars[inventory_hostname].ansible_os_family": "RedHat"
+}
+
+TASK [Show group_names] ********************************************************
+ok: [DOCKER01] => {
+    "msg": [
+        "ungrouped"
+    ]
+}
+ok: [nat8] => {
+    "msg": [
+        "Group01",
+        "Unix_SPL_Group"
+    ]
+}
+ok: [JENKINS] => {
+    "msg": [
+        "Group01"
+    ]
+}
+ok: [NS1] => {
+    "msg": [
+        "Unix_SPL_Group"
+    ]
+}
+
+TASK [Show groups] *************************************************************
+ok: [DOCKER01] => {
+    "groups": {
+        "Group01": [
+            "nat8",
+            "JENKINS"
+        ],
+        "Unix_SPL_Group": [
+            "nat8",
+            "NS1"
+        ],
+        "all": [
+            "DOCKER01",
+            "nat8",
+            "JENKINS",
+            "NS1"
+        ],
+        "ungrouped": [
+            "DOCKER01"
+        ]
+    }
+}
+ok: [nat8] => {
+    "groups": {
+        "Group01": [
+            "nat8",
+            "JENKINS"
+        ],
+        "Unix_SPL_Group": [
+            "nat8",
+            "NS1"
+        ],
+        "all": [
+            "DOCKER01",
+            "nat8",
+            "JENKINS",
+            "NS1"
+        ],
+        "ungrouped": [
+            "DOCKER01"
+        ]
+    }
+}
+ok: [JENKINS] => {
+    "groups": {
+        "Group01": [
+            "nat8",
+            "JENKINS"
+        ],
+        "Unix_SPL_Group": [
+            "nat8",
+            "NS1"
+        ],
+        "all": [
+            "DOCKER01",
+            "nat8",
+            "JENKINS",
+            "NS1"
+        ],
+        "ungrouped": [
+            "DOCKER01"
+        ]
+    }
+}
+ok: [NS1] => {
+    "groups": {
+        "Group01": [
+            "nat8",
+            "JENKINS"
+        ],
+        "Unix_SPL_Group": [
+            "nat8",
+            "NS1"
+        ],
+        "all": [
+            "DOCKER01",
+            "nat8",
+            "JENKINS",
+            "NS1"
+        ],
+        "ungrouped": [
+            "DOCKER01"
+        ]
+    }
+}
+
+PLAY RECAP *********************************************************************
+DOCKER01                   : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+JENKINS                    : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+NS1                        : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+nat8                       : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

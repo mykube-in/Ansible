@@ -1,0 +1,29 @@
+---
+- name: This Prompt for variables
+  hosts: localhost
+  vars_prompt:
+    - name: cust_desc
+      prompt: "what is the customer description?"
+      private: no
+ 
+    - name: cust_int
+      prompt: "what is the customer interface?"
+      private: no
+ 
+    - name: cust_color
+      prompt: "what is the customer color?"
+      private: no
+  
+    - name: cust_password you can use -e to pass value that variable will take presedenced and will not be encrypted as well
+      prompt: "what is the customer password?"
+      unsafe: yes # allow spl char like {  or %
+      private: yes # will not display on screen when you type input.
+      encrypt: sha512_crypt # encrtpy what you typed
+      confirm: yes # ask you to reenter password
+      salt_size: 7
+
+  tasks:
+ 
+    - name: display vaibales
+      debug:
+        msg: "{{cust_desc}},{{cust_int}},{{cust_color}},{{cust_password}}"

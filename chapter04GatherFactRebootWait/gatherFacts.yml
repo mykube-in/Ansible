@@ -1,0 +1,54 @@
+# https://www.middlewareinventory.com/blog/ansible-wait_for-examples
+---
+- name: importance of gather_facts = True
+  hosts: all
+  become: True
+  gather_facts: True
+  tasks:
+    - name: display the collected facts
+      debug: >
+        msg=ansible_distribution-->{{ansible_distribution}}
+
+    - name: display the  ansible_facts.key as ansible_facts is dictionary
+      debug: >
+        msg=ansible_facts.distribution_version-->{{ansible_facts.distribution_version}}
+
+    - name: value of ansible_facts.ansible_all_ipv4_addresses
+      debug: >
+        msg=ansible_all_ipv4_addresses-->{{ansible_all_ipv4_addresses}}
+
+    - name: check value of ansible_os_family 
+      debug: >
+        msg=ansible_os_family-->{{ansible_os_family }}
+
+    - name: Disable SELinux if ansible_os_family is RedHat and ansible_distribution is CentOS
+      ansible.posix.selinux:
+        state: disabled
+      when: ansible_os_family == 'RedHat' and  ansible_distribution == 'CentOS'
+      register: disable_selinux_registered_dict
+
+    - name: show status of last task to disable SELinux
+      debug: >
+        msg="disable_selinux_registered_dict-->{{disable_selinux_registered_dict}}"
+
+    - name: rebooing server if required.
+      tags: reboot
+      shell: "sleep 5 & reboot"
+      async: 1
+      poll: 0
+      when: disable_selinux_registered_dict.reboot_required == True
+
+    - name: Wait for the reboot and reconnect 
+      wait_for:
+        port: 22
+        host: '{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}'
+        search_regex: OpenSSH
+        delay: 10
+        timeout: 36000
+      connection: local
+
+    - name: Check the Uptime of the servers
+      shell: "uptime"
+      register: UpTime
+
+    - debug: var=UpTime

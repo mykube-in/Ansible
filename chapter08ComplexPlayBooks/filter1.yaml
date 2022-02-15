@@ -1,0 +1,32 @@
+---
+- name: this play book explains the filter use
+  hosts: localhost 
+  vars:
+    var_1: 5 
+    var_float: -2.5
+
+  tasks:
+  - name: this task will set value to variable tst_var1 equal to var_1 if var_1 is defined else it make test_var = 2
+    set_fact:
+      test_var1: "{{ var_1 | default(2) }}"
+  - name: this task will set value to variable tst_var2 equal to var_2 if var_2 is defined else it make test_var = 100
+    set_fact:
+      test_var2: "{{ var_2 | default(100) }}"
+  - name: this task will fetch absolute value of -2.5
+    set_fact:
+      test_var3: "{{ var_float | abs }}"
+  - name: this task will tell -2.5 ki power(5)
+    set_fact: 
+      test_var4: "{{ var_float | pow(5) }}"
+  - name: this task will display value of variable test_var1
+    debug:
+      var: test_var1
+  - name: this task will display value of variable test_var2
+    debug:
+      var: test_var2
+  - name: this task will display value of variable test_var3
+    debug:
+      msg: Absolute value -2.5 is "{{ test_var3 }}"
+  - name: this task will display value of variable test_var4
+    debug:
+      msg: Fifth power of -2.5 is "{{ test_var4 }}"
