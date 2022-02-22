@@ -1,4 +1,9 @@
 <b> Important Tips for Ansible :</b><br>
+
+https://www.golinuxcloud.com/create-ansible-role-with-example-playbooks/
+
+
+
 <b>1. condition check : </b> when we check the variable has value True or False. We put something like.<br>
 <b> when: myvar is defined and myvar == True </b> <br>
 OR <br>
